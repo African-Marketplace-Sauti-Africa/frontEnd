@@ -35,25 +35,29 @@ export default function Login() {
         handleInputChange(name,value)
     }
 
-    const onSubmit = (evt) => {
-        evt.preventDefault()
-        console.log(formData)
-        // setFormData(initialFormData)
+    const onSubmit = evt => {
+        evt.preventDefault();
+        console.log(formData);
+        setFormData(initialFormData);
     }
 
 
     return(
         <div>
             <h1>Login</h1>
-            <form  onSubmit={onSubmit}>
-                <label>
-                    Username: <input  onChange={onChange} value={formData.username} type='text' name='username'/>
-                </label>
-                <label>
-                    Password: <input onChange={onChange} value={formData.password} type='password' name='password' />
-                </label>
-            </form>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <label>
+                        Username: <input  onChange={onChange} value={formData.username} type='text' name='username'/>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password: <input onChange={onChange} value={formData.password} type='password' name='password' />
+                    </label>
+                </div>
                 <button disabled={btnDisable} id='loginBtn'>Login</button>
+            </form>
         </div>
     )
 }
