@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
 
 
+
+
 const initialFormData = {
     username:'',
     password:'',
@@ -35,13 +37,15 @@ export default function Login() {
 
     const onSubmit = (evt) => {
         evt.preventDefault()
+        console.log(formData)
+        // setFormData(initialFormData)
     }
 
 
     return(
-        <div onSubmit={onSubmit}>
+        <div>
             <h1>Login</h1>
-            <form>
+            <form  onSubmit={onSubmit}>
                 <label>
                     Username: <input  onChange={onChange} value={formData.username} type='text' name='username'/>
                 </label>
@@ -49,7 +53,7 @@ export default function Login() {
                     Password: <input onChange={onChange} value={formData.password} type='password' name='password' />
                 </label>
             </form>
-                <button disable={btnDisable} id='loginBtn'>Login</button>
+                <button disabled={btnDisable} id='loginBtn'>Login</button>
         </div>
     )
 }
