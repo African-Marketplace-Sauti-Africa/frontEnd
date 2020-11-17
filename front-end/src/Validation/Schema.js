@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export default yup.object().shape({
+const Schema= yup.object().shape({
 
     username: yup.string()
         .required('Valid Username Required'),
@@ -10,3 +10,5 @@ export default yup.object().shape({
 
 
 })
+
+export default Schema;
