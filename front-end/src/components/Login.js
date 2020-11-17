@@ -42,9 +42,9 @@ export default function Login() {
         const login = await userLogin(formData)
         if(login){
             setFormData(initialFormData);
-            push('/protected')
+            push('/UserInventory')
+            
         }
-
     }
 
 

@@ -1,14 +1,17 @@
 import axios from 'axios'
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 
 export const userLogin = loginUser => {
   return new Promise(resolve => {
-    axios
-    .post('/login', loginUser)
+    axiosWithAuth()
+    .post('/auth/login', loginUser)
     .then(res => {
-      console.log('Login Success',res);
-      sessionStorage.setItem('token',res.data.payload)
-      resolve(res.data.payload)
+      sessionStorage.setItem('token',res.data.token)
+      console.log('TOKEN: ', sessionStorage.getItem('token'))
+      
+      resolve(res.data.token)
+      
     })
     .catch(err => {
       console.log('Login Error',err);
@@ -20,8 +23,8 @@ export const userLogin = loginUser => {
 const otherWay = async loginUser => {
   try{
     const res = await axios.post('/login', loginUser)
-    sessionStorage.setItem('token',res.data.payload)
-    return res.data.payload
+    sessionStorage.setItem('token',res.data.token)
+    return res.data.token
   }catch(error){
     console.log('Login Error', error)
     return
@@ -30,12 +33,13 @@ const otherWay = async loginUser => {
 
 
 export const userRegister = registerUser => {
+  console.log('userRegister INVOKED')
   return new Promise(resolve => {
-    axios
-    .post('/register', registerUser)
+    axiosWithAuth()
+    .post('/auth/register', registerUser)
     .then(res => {
       console.log('Register Success', res);
-      resolve(res.data.payload)
+      resolve(res.data.token)
       
     })
     .catch(err => {

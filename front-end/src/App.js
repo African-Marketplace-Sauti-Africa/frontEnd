@@ -1,8 +1,9 @@
 import React, { createContext } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
-
+import UserInventory from './components/UserInventory'
 import Login from './components/Login'
 import SignUp from "./components/signup"
+import PrivateRoute from './utils/PrivateRoute'
 
 export const LoginContext = createContext()
 
@@ -45,6 +46,7 @@ function App(props) {
                   return null;
                 }}
               />   
+              <PrivateRoute exact path='/UserInventory' component={UserInventory} />
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={SignUp}></Route>
             </Switch>
