@@ -1,32 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import * as yup from 'yup';
 import axios from 'axios';
 
+const GlobalStyle = createGlobalStyle`
+    html {
+        height:100%;
 
-const StyledDiv = styled.div`
-    box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: rgba(29, 36, 42, 0.9);
+    }
+`
+
+const SharedStyles = css`
+    background-color:#eee;
+    height:40px;
+    border-radius:5px;
+    border:1px solid #ddd;
+    margin:10px 0 20px 0;
+    padding:20px;
+    box-sizing:border-box;
+`
+
+const StyledFormWrapper = styled.form`
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    flex-direction:column;
-    border:1px
-    width:40%;
-    background-color:#21b2a6;
-    border: 1px solid rgb(210, 210, 210);
-    border-radius: 4px;
-    box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
-    padding: 32px;
-    background-color: white;
-    margin-bottom: 24px;
-    padding:10%;
+    height: 100vh;
+    padding:0 20px;
 `
 
-const SignUpButton = styled.button`
-    color:white;
-    background-color: #ed4933;
+const StyledForm = styled.form`
+    width:100%;
+    max-width:700px;
+    padding:40px;
+    background-color:#fff;
+    border-radius:10px;
+    box-sizing:border-box;
+    box-shadow:0px 0px 20px 0px rgba(0, 0, 0, 0.2);
 `
+
+const StyledInput = styled.input`
+    display:block;
+    width:100%;
+    ${SharedStyles};
+`
+
+
+
+const StyledButton = styled.button`
+    display:block;
+    background-color:#f7797d;
+    color:#fff;
+    font-size:.9rem;
+    border:0;
+    border-radius:5px;
+    height:40px;
+    padding: 0 20px;
+    cursor:pointer;
+    box-sizing:border-box;
+`
+
+const StyledError = styled.div`
+
+`
+
 const initialFormValues = {
     name: '',
     email: '',
@@ -41,7 +81,7 @@ const initialFormValues = {
     termsOfService: '',
   };
 
-//   const initialUsers = [];
+
   const initialDisabled = true;
 
 function SignUp(props) {
@@ -125,64 +165,56 @@ function SignUp(props) {
 
   
     return(
-        <form onSubmit={onSubmit}>
-            <StyledDiv>
-                <div>
-                    <label>Name:&nbsp;
-                        <input
-                        value={newForm.value}
-                        onChange={inputChange}
-                        name='name'
-                        type='text'
-                        />
+        <>
+        <GlobalStyle/>
+        <StyledFormWrapper>
+             <StyledForm onSubmit={onSubmit}>
+                <h2>Sign Up</h2>
                 
-                    </label>
-                </div>
+                <label htmlFor='name'>Name</label>
+                <StyledInput
+                value={newForm.value}
+                onChange={inputChange}
+                name='name'
+                type='text'
+                />
 
-                <div>
-                    <label>Email:&nbsp;
-                        <input
-                        value={newForm.value}
-                        onChange={inputChange}
-                        name='email'
-                        type='email'
-                        />
-                
-                    </label>
-                </div>
+                <label htmlFor='email'>Email</label>
+                <StyledInput
+                 value={newForm.value}
+                 onChange={inputChange}
+                 name='email'
+                 type='email'
+                />
 
-                <div>
-                    <label>Password:&nbsp;
-                        <input
-                        
-                        type='password'
-                        name='password'
-                        onChange={inputChange}
-                        value={newForm.value}
-                        />
-                        </label>
-                </div>
+                <label htmlFor='password'>Password</label>
+                <StyledInput 
+                type='password'
+                name='password'
+                onChange={inputChange}
+                value={newForm.value}
+                />
 
-                <div>
-                    <label>
-                        <input
-                        type='checkbox'
-                        name='termsOfService'
-                        onChange={checkboxChange}
-                        checked={newForm.value}
-                        />
-                        I accept the Terms of Service&nbsp;
-                        </label>
-                </div>
+                <label htmlFor='termsOfService'>
+                <StyledInput
+                type='checkbox'
+                name='termsOfService'
+                onChange={checkboxChange}
+                checked={newForm.value}
+                />
+                I accept the Terms of Service&nbsp;
+                </label>
+
+                <StyledError><p>Error message here</p></StyledError>
+                <StyledButton type="submit">Submit</StyledButton>
+                </StyledForm>
+
+        </StyledFormWrapper>
+        </>
+               
+
             
-
-                <SignUpButton>
-                    <button onClick={onSubmit}>Submit</button>
-                </SignUpButton>
-
-            </StyledDiv>
-        </form>
-    
+            
     );
 
 };
