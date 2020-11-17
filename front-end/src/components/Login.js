@@ -3,6 +3,21 @@ import Schema from '../Validation/Schema';
 import { useHistory } from 'react-router-dom'
 import '../styles/Login.css'
 import { userLogin } from '../services/users'
+import styled, { keyframes } from 'styled-components'
+
+const kf = keyframes`
+  100% {
+    opacity: 1;
+  }
+`
+const FormAnimation = styled.div`
+    opacity: 0;
+    animation: ${kf} 1s ease-in-out forwards;
+
+`
+
+
+
 
 const initialFormData = {
     username:'',
@@ -50,25 +65,24 @@ export default function Login() {
 
     return(
     <div className='form'>
-        <div className='loginForm'>
+        <FormAnimation className='loginForm'>
             <h1 id='loginTitle'>Login</h1>
             <form onSubmit={onSubmit}>
                 <div className='user'>
                     <fieldset>
-                     <legend>Username: </legend>
-                        <input  onChange={onChange} value={formData.username} type='text' name='username'/>
-                    
+                        <legend>Username: </legend>
+                            <input  onChange={onChange} value={formData.username} type='text' name='username'/>
                     </fieldset>
                 </div>
                 <div className='pass'>
                     <fieldset>
-                     <legend> Password: </legend>
-                        <input onChange={onChange} value={formData.password} type='password' name='password' />
+                        <legend> Password: </legend>
+                            <input onChange={onChange} value={formData.password} type='password' name='password' />
                     </fieldset>
                 </div>
                 <button disabled={btnDisable} id='loginBtn'>Login</button>
             </form>
-        </div>
+        </FormAnimation>
     </div>
     )
 }
