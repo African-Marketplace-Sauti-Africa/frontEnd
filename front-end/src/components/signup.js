@@ -3,7 +3,7 @@ import {useHistory } from 'react-router-dom';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import * as yup from 'yup';
 import axios from 'axios';
-import {userRegister} from '../services/users';
+import {userRegisterAndLogin} from '../services/users';
 
 const GlobalStyle = createGlobalStyle`
     html {
@@ -130,7 +130,7 @@ function SignUp(props) {
 //             ));
 //     }
 
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault()
         const testSignUp = {
             username: newForm.username,
@@ -147,10 +147,18 @@ function SignUp(props) {
         //     setForm(initialFormValues)
         // })
 
-        console.log('submit')
-        userRegister(testSignUp)
-        console.log(testSignUp)
-        push('/login')
+       const res = await userRegisterAndLogin(testSignUp)
+        if(res === 'User Login Failed'){
+            push('/login')
+        } else if(res === 'User Register Failed'){
+            console.log('Registration Failed, Try again');
+        } else{
+            push('/UserInventory')
+        }
+
+
+        // console.log(testSignUp)
+        // push('/login')
 
     }
 

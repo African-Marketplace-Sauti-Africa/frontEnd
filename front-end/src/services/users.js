@@ -7,6 +7,8 @@ export const userLogin = loginUser => {
     axiosWithAuth()
     .post('/auth/login', loginUser)
     .then(res => {
+      console.log('res userLogin: ',res);
+      
       sessionStorage.setItem('token',res.data.token)
       console.log('TOKEN: ', sessionStorage.getItem('token'))
       
@@ -38,13 +40,34 @@ export const userRegister = registerUser => {
     axiosWithAuth()
     .post('/auth/register', registerUser)
     .then(res => {
-      console.log('Register Success', res);
-      resolve(res.data.token)
-      
+      resolve(res.data)
     })
     .catch(err => {
       console.log('Register Error', err);
       resolve()
     })
+  })
+}
+
+
+export const userRegisterAndLogin = registerUser => {
+  return new Promise(resolve => {
+    userRegister(registerUser)
+      .then(res => {
+        console.log('Hello res',res);
+        
+        if(res){
+          userLogin({username:registerUser.username,password:registerUser.password})
+          .then(loginRes => {
+            resolve(loginRes)
+          })
+          .catch(err =>{
+            resolve('User Login Failed')
+          })
+        }
+      })
+      .catch(err => {
+        resolve('User Register Failed')
+      })
   })
 }
