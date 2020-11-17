@@ -7,11 +7,7 @@ export const userLogin = loginUser => {
     axiosWithAuth()
     .post('/auth/login', loginUser)
     .then(res => {
-      console.log('res userLogin: ',res);
-      
       sessionStorage.setItem('token',res.data.token)
-      console.log('TOKEN: ', sessionStorage.getItem('token'))
-      
       resolve(res.data.token)
       
     })
@@ -35,7 +31,6 @@ const otherWay = async loginUser => {
 
 
 export const userRegister = registerUser => {
-  console.log('userRegister INVOKED')
   return new Promise(resolve => {
     axiosWithAuth()
     .post('/auth/register', registerUser)
@@ -54,8 +49,6 @@ export const userRegisterAndLogin = registerUser => {
   return new Promise(resolve => {
     userRegister(registerUser)
       .then(res => {
-        console.log('Hello res',res);
-        
         if(res){
           userLogin({username:registerUser.username,password:registerUser.password})
           .then(loginRes => {

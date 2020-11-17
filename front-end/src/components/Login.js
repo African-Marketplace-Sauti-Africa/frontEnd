@@ -38,7 +38,6 @@ export default function Login() {
 
     const onSubmit = async evt => {
         evt.preventDefault();
-        console.log(formData);
         const login = await userLogin(formData)
         if(login){
             setFormData(initialFormData);
