@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
 
-
-
-
 const initialFormData = {
     username:'',
     password:'',
