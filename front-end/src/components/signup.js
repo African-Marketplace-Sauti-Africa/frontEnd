@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {useHistory } from 'react-router-dom';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import * as yup from 'yup';
 import axios from 'axios';
+import {userRegister} from '../services/users';
 
 const GlobalStyle = createGlobalStyle`
     html {
@@ -24,7 +26,7 @@ const SharedStyles = css`
     box-sizing:border-box;
 `
 
-const StyledFormWrapper = styled.form`
+const StyledFormWrapper = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
@@ -68,10 +70,9 @@ const StyledError = styled.div`
 `
 
 const initialFormValues = {
-    name: '',
-    email: '',
+    username: '',
     password: '',
-    termsOfService: '',
+    // termsOfService: ''
   };
   
   const initialFormErrors = {
@@ -86,6 +87,7 @@ const initialFormValues = {
 
 function SignUp(props) {
 
+    const { push } = useHistory()
     const { inputChange, checkboxChange } = props;
 
     const [newForm, setForm] = useState(initialFormValues)
@@ -93,75 +95,84 @@ function SignUp(props) {
     const [disabled, setDisabled] = useState(initialDisabled)
     const [displayUser, setUser] = useState([])
     
-  let defaultSchema = yup.object().shape({
-    name: yup
-        .string()
-        .min(2, 'Name must be at least 2 characters')
-        .required('Name is required'),
-    email: yup
-        .string()
-        .required('Email is required'),
-    password: yup
-        .string()
-        .min(7, 'Password must be at least 7 characters')
-        .required('Please set your password'),
-    termsOfService: yup
-        .boolean()
-        .oneOf([true], "To continue, you must accept Terms of Service"),
-});
+//   let defaultSchema = yup.object().shape({
+//     name: yup
+//         .string()
+//         .min(2, 'Name must be at least 2 characters')
+//         .required('Name is required'),
+//     email: yup
+//         .string()
+//         .required('Email is required'),
+//     password: yup
+//         .string()
+//         .min(7, 'Password must be at least 7 characters')
+//         .required('Please set your password'),
+//     termsOfService: yup
+//         .boolean()
+//         .oneOf([true], "To continue, you must accept Terms of Service"),
+// });
     
-    useEffect(() => {
-        defaultSchema.validate(newForm)
-        .then(valid => setDisabled(!valid))
-    }, [newForm, defaultSchema])
+//     useEffect(() => {
+//         defaultSchema.validate(newForm)
+//         .then(valid => setDisabled(!valid))
+//     }, [newForm, defaultSchema])
 
-    const validationCheck = (event) => {
-        event.persist()
-        yup.reach(defaultSchema, event.target.name)
-        .validate(event.target.name)
-        .then(valid => setErrors(
-            {...setErrors, [event.target.name]: errors.errors}
-        ))
-        .catch(error => 
-            setErrors(
-                {...errors, [event.target.name]: errors.errors}
-            ));
-    }
-
-
-
+//     const validationCheck = (event) => {
+//         event.persist()
+//         yup.reach(defaultSchema, event.target.name)
+//         .validate(event.target.name)
+//         .then(valid => setErrors(
+//             {...setErrors, [event.target.name]: errors.errors}
+//         ))
+//         .catch(error => 
+//             setErrors(
+//                 {...errors, [event.target.name]: errors.errors}
+//             ));
+//     }
 
     const onSubmit = (event) => {
         event.preventDefault()
-        
         const testSignUp = {
-            name: newForm.name,
-            email: newForm.email,
+            username: newForm.username,
             password: newForm.password,
-            termsOfService: newForm.termsOfService,
+            // termsOfService: newForm.termsOfService,
+            department: 'seller'
         }
         
-        axios.post('', testSignUp)
-        .then(value => {
-            const newSignUp = value.data
-            setUser([newSignUp],...displayUser)
-            setUser(value.data)
-            setForm(initialFormValues)
-        })
+        // axios.post('', testSignUp)
+        // .then(value => {
+        //     const newSignUp = value.data
+        //     setUser([newSignUp],...displayUser)
+        //     setUser(value.data)
+        //     setForm(initialFormValues)
+        // })
 
+        console.log('submit')
+        userRegister(testSignUp)
+        console.log(testSignUp)
+        push('/login')
 
     }
 
-    const onInputChange = (evt) => {
-        const { name, value} = evt.target
-        inputChange(name, value);
-    };
+    // const onInputChange = (evt) => {
+    //     const { name, value} = evt.target
+    //     inputChange(name, value);
+    // };
 
     const onCheckboxChange = evt => {
         const { name, checked } = evt.target
         checkboxChange(name, checked);
     }
 
+    const onChange = (e) => {
+        
+        e.preventDefault()
+        setForm({
+            ...newForm,
+            [e.target.name]: e.target.value
+        })
+       
+    }
 
   
     return(
@@ -174,24 +185,16 @@ function SignUp(props) {
                 <label htmlFor='name'>Name</label>
                 <StyledInput
                 value={newForm.value}
-                onChange={inputChange}
-                name='name'
+                onChange={onChange}
+                name='username'
                 type='text'
-                />
-
-                <label htmlFor='email'>Email</label>
-                <StyledInput
-                 value={newForm.value}
-                 onChange={inputChange}
-                 name='email'
-                 type='email'
                 />
 
                 <label htmlFor='password'>Password</label>
                 <StyledInput 
                 type='password'
                 name='password'
-                onChange={inputChange}
+                onChange={onChange}
                 value={newForm.value}
                 />
 
@@ -206,15 +209,11 @@ function SignUp(props) {
                 </label>
 
                 <StyledError><p>Error message here</p></StyledError>
-                <StyledButton type="submit">Submit</StyledButton>
+                <StyledButton type="submit" onSubmit={onSubmit}>Submit</StyledButton>
                 </StyledForm>
 
         </StyledFormWrapper>
         </>
-               
-
-            
-            
     );
 
 };
