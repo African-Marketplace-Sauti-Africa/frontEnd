@@ -50,14 +50,17 @@ export default function Login() {
             <h1 id='loginTitle'>Login</h1>
             <form onSubmit={onSubmit}>
                 <div className='user'>
-                    <label>
-                        Username: <input  onChange={onChange} value={formData.username} type='text' name='username'/>
-                    </label>
+                    <fieldset>
+                     <legend>Username: </legend>
+                        <input  onChange={onChange} value={formData.username} type='text' name='username'/>
+                    
+                    </fieldset>
                 </div>
                 <div className='pass'>
-                    <label>
-                        Password: <input onChange={onChange} value={formData.password} type='password' name='password' />
-                    </label>
+                    <fieldset>
+                     <legend> Password: </legend>
+                        <input onChange={onChange} value={formData.password} type='password' name='password' />
+                    </fieldset>
                 </div>
                 <button disabled={btnDisable} id='loginBtn'>Login</button>
             </form>
