@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
+<<<<<<< HEAD
+import { useHistory } from 'react-router-dom'
+=======
 import '../styles/Login.css'
 
+>>>>>>> 9adc7d90f89b4166da4d27e5f34834268dbab0da
 
-
+import { userLogin } from '../services/users'
 
 
 const initialFormData = {
@@ -17,6 +21,7 @@ export default function Login() {
 
     const [formData, setFormData] = useState(initialFormData)
     const [btnDisable, setBtnDisable] = useState(initialBtnState)
+    const { push } = useHistory()
 
     useEffect(() => {
         Schema.isValid(formData)
@@ -37,10 +42,15 @@ export default function Login() {
         handleInputChange(name,value)
     }
 
-    const onSubmit = evt => {
+    const onSubmit = async evt => {
         evt.preventDefault();
         console.log(formData);
-        setFormData(initialFormData);
+        const login = await userLogin(formData)
+        if(login){
+            setFormData(initialFormData);
+            push('/protected')
+        }
+
     }
 
 
