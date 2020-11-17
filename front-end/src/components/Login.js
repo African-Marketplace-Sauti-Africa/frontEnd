@@ -1,11 +1,8 @@
 import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
-<<<<<<< HEAD
 import { useHistory } from 'react-router-dom'
-=======
 import '../styles/Login.css'
 
->>>>>>> 9adc7d90f89b4166da4d27e5f34834268dbab0da
 
 import { userLogin } from '../services/users'
 
