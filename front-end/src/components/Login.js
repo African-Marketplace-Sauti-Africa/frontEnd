@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
+import '../styles/Login.css'
+
 
 
 
@@ -43,15 +45,16 @@ export default function Login() {
 
 
     return(
-        <div>
-            <h1>Login</h1>
+    <div className='form'>
+        <div className='loginForm'>
+            <h1 id='loginTitle'>Login</h1>
             <form onSubmit={onSubmit}>
-                <div>
+                <div className='user'>
                     <label>
                         Username: <input  onChange={onChange} value={formData.username} type='text' name='username'/>
                     </label>
                 </div>
-                <div>
+                <div className='pass'>
                     <label>
                         Password: <input onChange={onChange} value={formData.password} type='password' name='password' />
                     </label>
@@ -59,5 +62,6 @@ export default function Login() {
                 <button disabled={btnDisable} id='loginBtn'>Login</button>
             </form>
         </div>
+    </div>
     )
 }
