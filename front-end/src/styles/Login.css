@@ -2,15 +2,18 @@
     box-sizing: border-box;
 }
 
-.form {
-    border: 2px solid black;
+body{
     background-color: rgb(60, 60, 70);
-    height: 98vh;
-    width: 190vh;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+
+}
+
+.form {
+    background-color: rgb(60, 60, 70);
+    margin-top: 30%;
+    margin-bottom: 25%;
     
     
 }
@@ -31,7 +34,6 @@
     justify-content: center;
     text-align: center;
     background-color: rgb(243, 240, 240);
-    /* border: 2px solid black; */
     border-radius: 3px;
     width: 450px;
     height: 450px;
