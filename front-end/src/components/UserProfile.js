@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { userById } from '../services/users'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 /* --------- This page is fictional --------- .put and .delete endpoints don't exist as of 11/17/2020 */
 
@@ -9,28 +9,30 @@ const UserProfile = () => {
   const [userInfo, setUserInfo] = useState()
   const [editing, setEditing] = useState(false)
   const { push } = useHistory()
+  //const params = useParams();
+ //const { id } = useParams();
 
-  const editUserInfo = (user) =>{
-    setEditing(true)
-    setUserInfo(user) //pass in new user info from .put() that doesn't currently exist in Back-End
-  }
+  // const editUserInfo = (user) =>{
+  //   setEditing(true)
+  //   setUserInfo(user) //pass in new user info from .put() that doesn't currently exist in Back-End
+  // }
 
- const saveUpdatedUser = e =>{
-    e.preventDefault()
-    .axiosWithAuth()
-      .put()
-      .then(res => {
-        const newInfo = res.data
-        setUserInfo(() => {
-          if(user.id === newInfo.id){
-            return newInfo
-          } return user
-        })
-      })
-      .catch(err => {
-        console.log('Update User Info Failed', err);
-      })
-  }
+//  const saveUpdatedUser = e =>{
+//     e.preventDefault()
+//     .axiosWithAuth()
+//       .put()
+//       .then(res => {
+//         const newInfo = res.data
+//         setUserInfo(() => {
+//           if(user.id === newInfo.id){
+//             return newInfo
+//           } return user
+//         })
+//       })
+//       .catch(err => {
+//         console.log('Update User Info Failed', err);
+//       })
+//   }
 
   const deleteUser = (user) => {
     axiosWithAuth()
@@ -60,12 +62,12 @@ const UserProfile = () => {
       <h1>
         Hello User
       </h1>
-      <button onClick={() => editUserInfo(user)} >Edit Profile</button>
+      {/* <button onClick={() => editUserInfo(user)} >Edit Profile</button> */}
       <button onClick={e => {
         e.stopPropagation()
         deleteUser(user)
       }}>Delete Profile</button>
-      {editing && (
+      {/* {editing && (
         <form onSubmit={saveUpdatedUser}>
           <label>
             Username:
@@ -88,7 +90,7 @@ const UserProfile = () => {
           <button type="submit">Save Changes</button>
           <button onClick={() => setEditing(false)}>Cancel Editing</button>
         </form>
-      )}
+      )} */}
 
     </div>
   )
