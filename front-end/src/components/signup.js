@@ -3,7 +3,7 @@ import {useHistory } from 'react-router-dom';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import * as yup from 'yup';
 import axios from 'axios';
-import {userRegisterAndLogin} from '../services/users';
+import {userRegisterAndLogin} from '../services/authentication';
 
 const GlobalStyle = createGlobalStyle`
     html {
