@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
+import * as yup from 'yup';
 import { useHistory } from 'react-router-dom'
 import '../styles/Login.css'
 import { userLogin } from '../services/authentication'
@@ -24,13 +25,29 @@ const initialFormData = {
     password:'',
 }
 
+const initialErrorState = {
+    username:'',
+    password:'' 
+}
+
 const initialBtnState = true
 
 export default function Login() {
 
     const [formData, setFormData] = useState(initialFormData)
     const [btnDisable, setBtnDisable] = useState(initialBtnState)
+    const [formErrors, setFormErrors] = useState(initialErrorState)
     const { push } = useHistory()
+
+    const errMsg = (name, value) => {
+        yup.reach(Schema, name).validate(value)
+        .then(() => 
+            setFormErrors({...formErrors, [name]: ''})
+        )
+        .catch(err => 
+            setFormErrors({...formErrors, [name]: err.errors[0]})
+        )
+    }
 
     useEffect(() => {
         let update = true
@@ -53,6 +70,7 @@ export default function Login() {
     const onChange = evt => {
         const {name, value} = evt.target
         handleInputChange(name,value)
+        errMsg(name,value)
     }
 
     const onSubmit = async evt => {
@@ -70,6 +88,9 @@ export default function Login() {
     <div className='form'>
         <FormAnimation className='loginForm'>
             <h1 id='loginTitle'>Login</h1>
+                <div style={{color: 'red'}}>
+                    <div>{formErrors.username}</div> 
+                </div>
             <form onSubmit={onSubmit}>
                 <div className='user'>
                     <fieldset>
@@ -78,6 +99,9 @@ export default function Login() {
                     </fieldset>
                 </div>
                 <div className='pass'>
+                    <div style={{color: 'red'}}>
+                        <div>{formErrors.password}</div>
+                    </div>
                     <fieldset>
                         <legend> Password: </legend>
                             <input onChange={onChange} value={formData.password} type='password' name='password' />
