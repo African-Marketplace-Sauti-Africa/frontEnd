@@ -33,10 +33,14 @@ export default function Login() {
     const { push } = useHistory()
 
     useEffect(() => {
+        let update = true
         Schema.isValid(formData)
-            .then(valid => 
-                setBtnDisable(!valid)
-            )
+            .then(valid => {
+                if(update){
+                    setBtnDisable(!valid)
+                }
+            })
+        return (()=>{ update = false})
     },[formData])
 
     const handleInputChange = (name, value) => {
