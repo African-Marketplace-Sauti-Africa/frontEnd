@@ -8,7 +8,6 @@ export const userLogin = loginUser => {
     .then(res => {
       sessionStorage.setItem('token',res.data.token)
       resolve(res.data.token)
-      
     })
     .catch(err => {
       console.log('Login Error',err);
