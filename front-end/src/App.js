@@ -4,6 +4,7 @@ import UserInventory from './components/UserInventory'
 import Login from './components/Login'
 import SignUp from "./components/signup"
 import PrivateRoute from './utils/PrivateRoute'
+import Developers from './components/developers'
 
 export const LoginContext = createContext()
 
@@ -49,6 +50,7 @@ function App(props) {
               <PrivateRoute exact path='/UserInventory' component={UserInventory} />
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={SignUp}></Route>
+              <Route path="/devs" component={Developers}></Route>
             </Switch>
           )}}
         />
