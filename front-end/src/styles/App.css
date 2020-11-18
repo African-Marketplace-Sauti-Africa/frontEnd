@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.navBar a {
+  color: white;
+  padding: 1.5%;
+  text-decoration: none;
+}
+
+.navBar a:hover {
+  color: #21b2a6;
+}
