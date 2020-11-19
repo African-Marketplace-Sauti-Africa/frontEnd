@@ -1,13 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap'); 
+
+
 *{
     box-sizing: border-box;
 }
 
 body{
-    background-color: rgb(60, 60, 70);
+    background-color: rgba(29,36,42,0.9);
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .form {
-    background-color: rgb(60, 60, 70);
+    background-color:transparent;
     margin-top: 8.7%;
     display: flex;
     justify-content: center;    
@@ -15,11 +19,11 @@ body{
 
 #loginTitle{
     display: block;
-    border-bottom: 2px solid  rgb(62, 62, 65);
+    border-bottom: 2px solid  rgba(29,36,42,0.9);
     width: 90%;
     margin-top: -25%;
     margin-right: 25%;
-    color: rgb(30, 30, 31);
+    color: rgba(29,36,42,0.9);
     
 }
 
@@ -50,7 +54,7 @@ input {
 }
 
 fieldset{
-    border:.5px solid black;   
+    border:.5px solid rgba(29,36,42,0.9);   
     border-radius: 3px;
     width: 140%;
     margin-left: -20%;
@@ -60,6 +64,7 @@ fieldset{
 legend {
     text-align: left;
     font-size: 15px;
+    color: rgba(29,36,42,0.9);
 }
 
 button{
@@ -67,11 +72,11 @@ button{
     border-radius: 3px;
     font-size: 75%;
     font-weight: bold;
-    width: 50%;
-    height: 25%;
+    width: 70%;
+    height: 20%;
     margin-top: 15%;
-    color: black;
-    background-color: rgb(214, 206, 206); 
+    color: white;
+    background-color: #f7797d; 
     box-shadow: 2px 2px rgb(62, 62, 65);
     transition: 1000ms;
 }
