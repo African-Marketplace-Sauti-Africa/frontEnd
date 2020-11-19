@@ -1,0 +1,60 @@
+.devCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+  
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    margin-left: 25%;
+    margin-bottom: 4%;
+    color: rgb(236, 236, 236);
+    border-bottom: 2px solid rgb(173, 169, 169);
+    width: 50%;
+}
+
+img{
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 2%;
+    background-color: white; 
+}
+
+.imgWrap {
+    position: relative;
+    width: 71%;
+    margin-bottom: 1%;
+    border-radius: 2%;
+}
+  
+.imgDesc {
+  position: absolute;
+  border-radius: 2%;
+  top: -4.7%;
+  bottom: -3.6%;
+  left: .5%;
+  right: .5%;
+  background: rgba(2, 2, 2, 0.72);
+  color: #fff;
+  visibility: hidden;
+  padding-top: 43%;
+  opacity: 0;
+  transition: opacity 1s, visibility 1s;
+}
+
+.imgWrap:hover .imgDesc {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+

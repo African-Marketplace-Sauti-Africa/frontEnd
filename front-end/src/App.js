@@ -5,6 +5,7 @@ import Login from './components/Login'
 import SignUp from "./components/signup"
 import PrivateRoute from './utils/PrivateRoute'
 import Developers from './components/developers'
+import DevPage from './components/DevPage'
 
 export const LoginContext = createContext()
 
@@ -51,6 +52,7 @@ function App(props) {
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={SignUp}></Route>
               <Route path="/devs" component={Developers}></Route>
+              <Route path='/devpage' component={DevPage}></Route>
             </Switch>
           )}}
         />
