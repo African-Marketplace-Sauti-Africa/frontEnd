@@ -14,16 +14,17 @@ const UserInventory = () => {
  })
     
   const loginInfo = useContext(LoginContext)
-  const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
-  const id = loginInfo.subject
+//   const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
+    const id = loginInfo.subject
+    console.log('Logged in ',loginInfo)
 
 
 
     useEffect(()=>{
         axiosWithAuth()
-        .get(`https://african-marketplace-back-end.herokuapp.com/users/108/items`)
+        .get(`https://african-marketplace-back-end.herokuapp.com/users/${id}/items`)
         .then((res) => {
-            console.log('RES: ', res.data)
+            console.log('RES: ', res.data.items)
             setUserItems(res.data.items)
         })
         .catch((err) => {
@@ -41,9 +42,10 @@ const UserInventory = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         axiosWithAuth()
-        .post('https://african-marketplace-back-end.herokuapp.com/users/108/items', newItemValues)
+        .post(`https://african-marketplace-back-end.herokuapp.com/items/additem`, newItemValues)
         .then((res) => {
             console.log(res)
+            setUserItems(res.data)
         })
         .catch((err) => {
             console.log(err)
@@ -52,10 +54,22 @@ const UserInventory = () => {
 
     return (
         <div>
-            <button onClick={()=> setAddItem(!additem) }>List a New Item</button>
+            {
+                userItems.map((item, key) => {
+                    return (
+                        <div className='itemCard'>
+                            <h3>{item.name}</h3>
+                         <p>{item.description}</p>
+                    <h5>{item.location}</h5>
+                    <h5>{`$${item.price}`}</h5>
+                        </div>
+                    )
+                })
+            }
+            <button onClick={()=> setAddItem(!additem) }>{additem ? 'Cancel' : 'List a new item'}</button>
             {additem && 
             <div>
-                <form>
+                <form onSubmit={onSubmit}>
                     <label>
                         Item Name:
                         <input 
@@ -96,7 +110,7 @@ const UserInventory = () => {
                         onChange={onChange}
                         />
                     </label>
-                    <button>{additem ? 'Cancel' : 'List a new item'}</button>
+                    <button>Add Item</button>
                 </form>
             </div>
             }
