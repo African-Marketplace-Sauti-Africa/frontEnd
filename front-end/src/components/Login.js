@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom'
+import jwt_decode from "jwt-decode"
 import '../styles/Login.css'
 import { userLogin } from '../services/authentication'
 import styled, { keyframes } from 'styled-components'
@@ -32,7 +33,7 @@ const initialErrorState = {
 
 const initialBtnState = true
 
-export default function Login() {
+export default function Login(props) {
 
     const [formData, setFormData] = useState(initialFormData)
     const [btnDisable, setBtnDisable] = useState(initialBtnState)
@@ -78,6 +79,9 @@ export default function Login() {
         evt.preventDefault();
         const login = await userLogin(formData)
         if(login){
+            let token = login
+            let decode = jwt_decode(token)
+            props.setLoginInfo(decode)
             setFormData(initialFormData);
             push('/UserInventory/:id')
             
