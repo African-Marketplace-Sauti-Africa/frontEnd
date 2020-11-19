@@ -7,9 +7,7 @@ function Nav() {
     return (
     <div>
       <nav className='navBar'>
-          <Link style={{color: 'white', textDecoration: 'none'}} to='/'>
-          <h3>African-MarketPlace</h3>
-          </Link>
+          <h3 className='navTitle'>African-MarketPlace</h3>
           <ul className='navLinks'>
             <Link className='navHome' to="/home"><li>Home</li></Link>
             <Link className='navAbour' to="/about"><li>About</li></Link>

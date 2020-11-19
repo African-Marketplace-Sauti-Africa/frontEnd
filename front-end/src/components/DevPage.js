@@ -1,6 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import '../styles/DevPage.css'
+import '../styles/DevPage.css';
+import styled, { keyframes } from 'styled-components';
+
+const kf = keyframes`
+  100% {
+    opacity: 1;
+  }
+`
+const FormAnimation = styled.div`
+    opacity: 0;
+    animation: ${kf} 1s ease-in-out forwards;
+
+`
 
 const devTeam = [
     {name:'Rod Hentringer',
@@ -39,7 +51,7 @@ export default function DevPage() {
     return (
         <div>
             <h1>Meet The Team</h1>
-        <div className='devCard'>
+        <FormAnimation className='devCard'>
            {devs.map((dev, index) => {
                return (
                 <a href={dev.profilePage} target='_blank' rel='noreferrer'>
@@ -50,7 +62,7 @@ export default function DevPage() {
                 </a>
                )
            })}
-        </div>
+        </FormAnimation>
         </div>
     );
 }
