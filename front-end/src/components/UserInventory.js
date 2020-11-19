@@ -22,7 +22,6 @@ const {id} = useParams()
     // .then((res)=>{
     //     debugger
     //     console.log('users item' ,res)
-
     // .catch((err)=>{
     //     debugger
     //     console.log('Error' ,err)

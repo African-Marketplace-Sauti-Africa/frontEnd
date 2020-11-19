@@ -47,7 +47,7 @@ function App(props) {
                   return null;
                 }}
               />   
-              <PrivateRoute exact path='/UserInventory' component={UserInventory} />
+              <PrivateRoute exact path='/UserInventory/:id' component={UserInventory}/>
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={SignUp}></Route>
               <Route path="/devs" component={Developers}></Route>

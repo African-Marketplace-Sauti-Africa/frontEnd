@@ -153,7 +153,7 @@ function SignUp(props) {
         } else if(res === 'User Register Failed'){
             console.log('Registration Failed, Try again');
         } else{
-            push('/UserInventory')
+            push('/UserInventory/:id')
         }
 
 
