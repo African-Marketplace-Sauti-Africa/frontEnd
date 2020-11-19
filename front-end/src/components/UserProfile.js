@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import { userById, deleteUser } from '../services/users'
-import { useHistory, useParams } from 'react-router-dom'
+import { LoginContext } from '../App'
 
 /* --------- This page has fictional editing --------- */
 /* .put endpoint does not exist as of 11/17/2020 */
@@ -9,8 +10,12 @@ const UserProfile = () => {
   const [userInfo, setUserInfo] = useState()
   const [editing, setEditing] = useState(false)
   const { push } = useHistory()
-  //const params = useParams();
- //const { id } = useParams();
+  const loginInfo = useContext(LoginContext)
+  const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
+  const id = loginInfo.subject
+  
+  console.log('Profile login',loginInfo);
+  
 
   // const editUserInfo = (user) =>{
   //   setEditing(true)
@@ -25,38 +30,41 @@ const UserProfile = () => {
 //     } 
 //   }
 
-// const deleteConfirm = async id => {
-//   const deleting = await deleteUser(id)
-//   if(deleting){
-//     push('/home') 
-//   }
-// }
+const deleteConfirm = async id => {
+  const deleting = await deleteUser(id)
+  if(deleting){
+    push('/home') 
+  }
+}
 
-  // useEffect((id) => {
-  //   userById(id)
-  //     .then(res => {
-  //       console.log('UserProfile userById Response', res)
-  //       setUserInfo(res.data)
-  //     })
-  //     .catch(err => {
-  //       console.log('UserProfile userById Error', err)
-  //     })
-  // }, [])
+  // This get request is unnecessary as I already have the data from loginContext.
+  // Using anyway for CRUD MVP
+  useEffect(() => {
+    userById(id)
+      .then(res => {
+        console.log('UserProfile userById Response', res)
+        setUserInfo(res.data)
+      })
+      .catch(err => {
+        console.log('UserProfile userById Error', err)
+      })
+  }, [])
+
 
   return(
     <div>
       <h1>
-        Hello User
+        Hello {name}!
       </h1>
       {/* <button onClick={() => editUserInfo(user)} >Edit Profile</button> */}
-      {/* <div>
+      <div>
         <h2>Danger Zone!</h2>
         <p>Deleting your entire profile is permanent!</p>
         <button onClick={e => {
           e.stopPropagation()
           deleteConfirm(id)
         }}>Delete Profile</button>
-      </div> */}
+      </div>
       {/* {editing && (
         <form onSubmit={saveUpdatedUser}>
           <label>
