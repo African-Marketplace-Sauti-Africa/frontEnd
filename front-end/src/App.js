@@ -1,11 +1,16 @@
 import React, { createContext } from 'react'
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom'
+
+import './styles/App.css'
+
 import UserInventory from './components/UserInventory'
+import UserProfile from './components/UserProfile'
 import Login from './components/Login'
 import SignUp from "./components/signup"
-import PrivateRoute from './utils/PrivateRoute'
 import Developers from './components/developers'
 import DevPage from './components/DevPage'
+
+import PrivateRoute from './utils/PrivateRoute'
 
 export const LoginContext = createContext()
 
@@ -14,6 +19,15 @@ function App(props) {
   return (
     <Router>
       <div>
+        <nav className='navBar'>
+          <Link className='navHome' to="/home">Home</Link>
+          <Link className='navAbour' to="/about">About</Link>
+          <Link className='navMeet' to="/meettheteam">Meet The Team</Link>
+          <Link className='navLogin' to="/login">Login</Link>
+          <Link className='navSignup' to="/signup">Sign Up</Link>
+          <Link className='navDevs' to="/devs">Developers</Link>
+        </nav>
+
         <Route
           render={({ location }) => {
             console.log("LOC: ", location)
@@ -49,6 +63,7 @@ function App(props) {
                 }}
               />   
               <PrivateRoute exact path='/UserInventory' component={UserInventory} />
+              <PrivateRoute exact path='/profile' component={UserProfile} />
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={SignUp}></Route>
               <Route path="/devs" component={Developers}></Route>
