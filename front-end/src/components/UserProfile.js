@@ -25,23 +25,23 @@ const UserProfile = () => {
 //     } 
 //   }
 
-const deleteConfirm = async id => {
-  const deleting = await deleteUser(id)
-  if(deleting){
-    push('/home') 
-  }
-}
+// const deleteConfirm = async id => {
+//   const deleting = await deleteUser(id)
+//   if(deleting){
+//     push('/home') 
+//   }
+// }
 
-  useEffect((id) => {
-    userById(id)
-      .then(res => {
-        console.log('UserProfile userById Response', res)
-        setUserInfo(res.data)
-      })
-      .catch(err => {
-        console.log('UserProfile userById Error', err)
-      })
-  }, [])
+  // useEffect((id) => {
+  //   userById(id)
+  //     .then(res => {
+  //       console.log('UserProfile userById Response', res)
+  //       setUserInfo(res.data)
+  //     })
+  //     .catch(err => {
+  //       console.log('UserProfile userById Error', err)
+  //     })
+  // }, [])
 
   return(
     <div>
@@ -49,14 +49,14 @@ const deleteConfirm = async id => {
         Hello User
       </h1>
       {/* <button onClick={() => editUserInfo(user)} >Edit Profile</button> */}
-      <div>
+      {/* <div>
         <h2>Danger Zone!</h2>
         <p>Deleting your entire profile is permanent!</p>
         <button onClick={e => {
           e.stopPropagation()
           deleteConfirm(id)
         }}>Delete Profile</button>
-      </div>
+      </div> */}
       {/* {editing && (
         <form onSubmit={saveUpdatedUser}>
           <label>
@@ -85,3 +85,5 @@ const deleteConfirm = async id => {
     </div>
   )
 }
+
+export default UserProfile

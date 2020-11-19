@@ -1,56 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory } from 'react-router-dom';
-import styled, { createGlobalStyle, css } from 'styled-components';
+import styled, { createGlobalStyle, css, keyframes } from 'styled-components';
 import * as yup from 'yup';
 import axios from 'axios';
 import {userRegisterAndLogin} from '../services/authentication';
+// import defaultSchema from '../Validation/signupSchema';
 
 const GlobalStyle = createGlobalStyle`
-    html {
-        height:100%;
-
-    }
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: rgba(29, 36, 42, 0.9);
-    }
-`
-
-const SharedStyles = css`
-    background-color:#eee;
-    height:40px;
-    border-radius:5px;
-    border:1px solid #ddd;
-    margin:10px 0 20px 0;
-    padding:20px;
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+* {
     box-sizing:border-box;
+}
+html {
+    height:100%;
+
+}
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    background: rgba(29, 36, 42, 0.9);
+}
+
+input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    border-style: none;
+    background-color: white;
+    margin-left: 0%;
+    color:rgba(29, 36, 42, 0.9);
+}
+
+fieldset{
+    border:.5px solid rgba(29, 36, 42, 0.9);
+    border-radius: 3px;
+    width: 140%;
+    margin-left: -20%;
+    margin-bottom: 10%;
+}
 `
 
-const StyledFormWrapper = styled.div`
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height: 100vh;
-    padding:0 20px;
+const kf = keyframes`
+    100%{
+        opacity: 1;
+    }
 `
 
 const StyledForm = styled.form`
-    width:100%;
-    max-width:700px;
-    padding:40px;
-    background-color:#fff;
-    border-radius:10px;
-    box-sizing:border-box;
-    box-shadow:0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+    box-shadow:0px 0px 20px 0px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 7px;
+    width: 450px;
+    height: 450px;
+    opacity: 0;
+    color:rgba(29, 36, 42, 0.9);
+    animation: ${kf} 1s ease-in-out forwards;
+    margin-top:10%;
 `
 
-const StyledInput = styled.input`
-    display:block;
-    width:100%;
-    ${SharedStyles};
+const Title = styled.div`
+    display: block;
+    border-bottom: 1px solid  rgb(62, 62, 65);
+    width: 90%;
+    margin-top: -2%;
+    color: rgb(62, 62, 65);
+    margin-bottom:5%;
 `
 
-
+const InputInfo = styled.div`
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    outline: none;
+    border-style: none;
+    background-color:white;
+    margin-left: -4.5%;
+`
 
 const StyledButton = styled.button`
     display:block;
@@ -63,11 +93,12 @@ const StyledButton = styled.button`
     padding: 0 20px;
     cursor:pointer;
     box-sizing:border-box;
+    margin-top:2%;
 `
 
-const StyledError = styled.div`
+// const StyledError = styled.div`
 
-`
+// `
 
 const initialFormValues = {
     username: '',
@@ -95,40 +126,24 @@ function SignUp(props) {
     const [disabled, setDisabled] = useState(initialDisabled)
     const [displayUser, setUser] = useState([])
     
-//   let defaultSchema = yup.object().shape({
-//     name: yup
-//         .string()
-//         .min(2, 'Name must be at least 2 characters')
-//         .required('Name is required'),
-//     email: yup
-//         .string()
-//         .required('Email is required'),
-//     password: yup
-//         .string()
-//         .min(7, 'Password must be at least 7 characters')
-//         .required('Please set your password'),
-//     termsOfService: yup
-//         .boolean()
-//         .oneOf([true], "To continue, you must accept Terms of Service"),
-// });
     
-//     useEffect(() => {
-//         defaultSchema.validate(newForm)
-//         .then(valid => setDisabled(!valid))
-//     }, [newForm, defaultSchema])
+    // useEffect(() => {
+    //     defaultSchema.validate(newForm)
+    //     .then(valid => setDisabled(!valid))
+    // }, [newForm, defaultSchema])
 
-//     const validationCheck = (event) => {
-//         event.persist()
-//         yup.reach(defaultSchema, event.target.name)
-//         .validate(event.target.name)
-//         .then(valid => setErrors(
-//             {...setErrors, [event.target.name]: errors.errors}
-//         ))
-//         .catch(error => 
-//             setErrors(
-//                 {...errors, [event.target.name]: errors.errors}
-//             ));
-//     }
+    // const validationCheck = (event) => {
+    //     event.persist()
+    //     yup.reach(defaultSchema, event.target.name)
+    //     .validate(event.target.name)
+    //     .then(valid => setErrors(
+    //         {...setErrors, [event.target.name]: errors.errors}
+    //     ))
+    //     .catch(error => 
+    //         setErrors(
+    //             {...errors, [event.target.name]: errors.errors}
+    //         ));
+    // }
 
     const onSubmit = async (event) => {
         event.preventDefault()
@@ -156,16 +171,7 @@ function SignUp(props) {
             push('/UserInventory/:id')
         }
 
-
-        // console.log(testSignUp)
-        // push('/login')
-
     }
-
-    // const onInputChange = (evt) => {
-    //     const { name, value} = evt.target
-    //     inputChange(name, value);
-    // };
 
     const onCheckboxChange = evt => {
         const { name, checked } = evt.target
@@ -186,41 +192,33 @@ function SignUp(props) {
     return(
         <>
         <GlobalStyle/>
-        <StyledFormWrapper>
              <StyledForm onSubmit={onSubmit}>
-                <h2>Sign Up</h2>
-                
-                <label htmlFor='name'>Name</label>
-                <StyledInput
-                value={newForm.value}
-                onChange={onChange}
-                name='username'
-                type='text'
-                />
+             <Title><h2>Join African Marketplace</h2></Title>
+                 <InputInfo>
+                     <fieldset>
+                         <legend>Username</legend>
+                            <input
+                            value={newForm.value}
+                            onChange={onChange}
+                            name='username'
+                            type='text'/>
+                     </fieldset>
+                </InputInfo>
+                <InputInfo>
+                    <fieldset>
+                         <legend>Password</legend>
+                            <input
+                            value={newForm.value}
+                            onChange={onChange}
+                            name='password'
+                            type='password'/>
+                     </fieldset>
+                </InputInfo>
 
-                <label htmlFor='password'>Password</label>
-                <StyledInput 
-                type='password'
-                name='password'
-                onChange={onChange}
-                value={newForm.value}
-                />
-
-                <label htmlFor='termsOfService'>
-                <StyledInput
-                type='checkbox'
-                name='termsOfService'
-                onChange={checkboxChange}
-                checked={newForm.value}
-                />
-                I accept the Terms of Service&nbsp;
-                </label>
-
-                <StyledError><p>Error message here</p></StyledError>
+                {/* <StyledError><p>Error message here</p></StyledError> */}
                 <StyledButton type="submit" onSubmit={onSubmit}>Submit</StyledButton>
                 </StyledForm>
 
-        </StyledFormWrapper>
         </>
     );
 
