@@ -5,7 +5,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 export const userById = id => {
   return new Promise(resolve => {
     axiosWithAuth()
-    .get(`/user/${id}`)
+    .get(`/users/${id}`)
     .then(res => {
       console.log('userById res:',res);
       resolve(res)
