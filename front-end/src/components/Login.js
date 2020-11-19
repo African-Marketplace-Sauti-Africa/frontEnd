@@ -46,6 +46,7 @@ export default function Login() {
         )
         .catch(err => 
             setFormErrors({...formErrors, [name]: err.errors[0]})
+            
         )
     }
 
