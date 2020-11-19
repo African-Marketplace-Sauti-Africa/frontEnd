@@ -63,7 +63,7 @@ function App() {
                 </Route>
                 <Route path="/signup" component={SignUp}></Route>
                 <Route path="/devs" component={Developers}></Route>
-                <Route path='/devpage' component={DevPage}></Route>
+                <Route path='/meettheteam' component={DevPage}></Route>
               </Switch>
             )}}
           />
