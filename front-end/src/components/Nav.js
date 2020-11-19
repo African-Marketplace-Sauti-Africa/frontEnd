@@ -8,7 +8,7 @@ function Nav() {
     <div>
       <nav className='navBar'>
           <Link style={{color: 'white', textDecoration: 'none'}} to='/'>
-          <h3>African-MarketPlace</h3>
+          <h3 className='navTitle'>African-MarketPlace</h3>
           </Link>
           <ul className='navLinks'>
             <Link className='navHome' to="/home"><li>Home</li></Link>

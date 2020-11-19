@@ -8,7 +8,8 @@ nav{
     margin-top: -.51%;
     margin-right: -.5%;
     margin-left: -.51%;
- 
+    font-family: sans-serif;
+    letter-spacing: 1px;
 }
 
 
@@ -18,6 +19,7 @@ nav{
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  text-align: center;
 }
 
 .navBar a {
@@ -29,4 +31,8 @@ nav{
 
 .navBar a:hover {
   color: #21b2a6;
+}
+
+.navTitle{
+    color: white
 }

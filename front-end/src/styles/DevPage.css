@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    margin-left: 7.5%;
   
 }
 
@@ -19,7 +20,7 @@ h1{
 
 img{
     width: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     border-radius: 2%;
     background-color: white; 
 }
@@ -34,10 +35,10 @@ img{
 .imgDesc {
   position: absolute;
   border-radius: 2%;
-  top: -7%;
+  top: -7.3%;
   bottom: -6%;
-  left: .3%;
-  right: .3%;
+  left: 0%;
+  right: 0%;
   background: rgba(2, 2, 2, 0.72);
   color: #fff;
   font-size: 150%;
