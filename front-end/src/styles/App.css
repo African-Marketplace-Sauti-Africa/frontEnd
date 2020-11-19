@@ -2,35 +2,4 @@
   box-sizing: border-box;
 }
 
-nav{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 4rem;
-  background: darkgray;
-  color: white;
-}
 
-.nav{
-  border: 2px solid red;
-  min-width: 100%;
-}
-
-.navLinks{
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-}
-
-.navBar a {
-  
-  color: white;
-  padding: 1.5%;
-  text-decoration: none;
-}
-
-.navBar a:hover {
-  color: #21b2a6;
-}
