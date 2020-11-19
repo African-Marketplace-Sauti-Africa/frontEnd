@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import '../styles/nav.css'
+
 
 function Nav() {
     return (
+    <div>
       <nav className='navBar'>
           <Link style={{color: 'white', textDecoration: 'none'}} to='/'>
           <h3>African-MarketPlace</h3>
@@ -16,6 +19,7 @@ function Nav() {
             <Link className='navDevs' to="/devs"><li>Developers</li></Link>
           </ul>
       </nav>
+    </div>
     );
   }
 

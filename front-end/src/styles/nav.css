@@ -1,0 +1,32 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4rem;
+    background: darkgray;
+    color: white;
+    margin-top: -.51%;
+    margin-right: -.5%;
+    margin-left: -.51%;
+ 
+}
+
+
+.navLinks{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.navBar a {
+  
+  color: white;
+  padding: 1.5%;
+  text-decoration: none;
+}
+
+.navBar a:hover {
+  color: #21b2a6;
+}

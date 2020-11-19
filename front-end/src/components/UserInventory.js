@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import {useParams, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import { LoginContext } from '../App'
 
 const UserInventory = () => {
  const [userItems, setUserItems] = useState([])
@@ -11,8 +12,12 @@ const UserInventory = () => {
      description: '',
      location: ''
  })
+    
+  const loginInfo = useContext(LoginContext)
+  const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
+  const id = loginInfo.subject
 
-const {id} = useParams()
+
 
     useEffect(()=>{
         axiosWithAuth()
@@ -91,7 +96,7 @@ const {id} = useParams()
                         onChange={onChange}
                         />
                     </label>
-                    <button>List</button>
+                    <button>{additem ? 'Cancel' : 'List a new item'}</button>
                 </form>
             </div>
             }
