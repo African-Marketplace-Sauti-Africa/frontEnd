@@ -122,8 +122,6 @@ const Developers = () => {
             devInfo()
         }, [])
 
-
-
     return (
         <>
         <GlobalStyles/>
