@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-rout
 import './styles/App.css'
 
 import UserInventory from './components/UserInventory'
+import UserProfile from './components/UserProfile'
 import Login from './components/Login'
 import SignUp from "./components/signup"
 import Developers from './components/developers'
@@ -61,6 +62,7 @@ function App(props) {
                 }}
               />   
               <PrivateRoute exact path='/UserInventory' component={UserInventory} />
+              <PrivateRoute exact path='/profile' component={UserProfile} />
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={SignUp}></Route>
               <Route path="/devs" component={Developers}></Route>

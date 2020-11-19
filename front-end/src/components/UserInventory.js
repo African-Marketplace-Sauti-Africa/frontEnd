@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 
 const UserInventory = () => {
  
@@ -30,6 +30,7 @@ const {id} = useParams()
 
     return (
         <div>
+            <Link to='/profile' >Profile</Link>
             <p>PRIVATE PAGE</p>
         </div>
     )
