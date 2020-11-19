@@ -83,7 +83,7 @@ export default function Login(props) {
             let decode = jwt_decode(token)
             props.setLoginInfo(decode)
             setFormData(initialFormData);
-            push('/UserInventory')
+            push('/UserInventory/:id')
             
         }
     }
