@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import styled, { createGlobalStyle, css } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap');
 
-    html {
-        background:linear-gradient(to left, rgb(35, 37, 38), rgb(65, 67, 69));
-    }
     body {
         font-family: 'Open Sans', sans-serif;
         letter-spacing:2.5px;
@@ -16,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
         align-items:center;
         border-bottom: 1px;
         border-color: white;
-        margin-top:30px;
+        /* margin-top:30px; */
     }
     h2 {
         border-bottom: 2px solid  white; 
@@ -69,6 +66,8 @@ const Portrait = styled.img`
     border-radius:50%;
     margin-left:15px;
     margin:20px;
+    border:none;
+   
 `
 
 const DevInfo = styled.div`

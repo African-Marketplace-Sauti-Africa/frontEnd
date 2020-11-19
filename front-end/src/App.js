@@ -21,8 +21,8 @@ function App() {
   return (    
    <LoginContext.Provider value={loginInfo}>
       <Router>
+        <Nav/>
         <div>
-          <div className='nav'><Nav/></div>
           <Route
             render={({ location }) => {
               return (
