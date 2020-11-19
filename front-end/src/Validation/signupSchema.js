@@ -9,9 +9,6 @@ import * as yup from 'yup';
         .string()
         .min(8, 'Password must be at least 8 characters')
         .required('Please set your password'),
-    termsOfService: yup
-        .boolean()
-        .oneOf([true], "To continue, you must accept Terms of Service"),
 });
 
 export default defaultSchema;
