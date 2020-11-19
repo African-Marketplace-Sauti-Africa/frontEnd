@@ -11,6 +11,7 @@ export const userLogin = loginUser => {
     })
     .catch(err => {
       console.log('Login Error',err);
+      alert('Something Went Wrong. Please try again')
       resolve()
     })
   })
@@ -37,6 +38,7 @@ export const userRegister = registerUser => {
     })
     .catch(err => {
       console.log('Register Error', err);
+      alert('Something Went Wrong. Please try a new username')
       resolve()
     })
   })
@@ -50,7 +52,7 @@ export const userRegisterAndLogin = registerUser => {
         if(res){
           userLogin({username:registerUser.username,password:registerUser.password})
           .then(loginRes => {
-            resolve(loginRes)
+            resolve(loginRes.data.token)
           })
           .catch(err =>{
             resolve('User Login Failed')

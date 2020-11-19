@@ -1,5 +1,5 @@
-import React, { createContext } from 'react'
-import {BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom'
+import React, { createContext, useState } from 'react'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
 import './styles/App.css'
 
@@ -15,57 +15,61 @@ import PrivateRoute from './utils/PrivateRoute'
 
 export const LoginContext = createContext()
 
-function App(props) {
-  console.log("APP: ", props)
-  return (
-    <Router>
-      <Nav/>
-      <div>
-        <Route
-          render={({ location }) => {
-            console.log("LOC: ", location)
-            return (
-            <Switch location={location}>
-              <Route exact path="/">
-                <Redirect
-                  to={{ pathname: "/home" }}
+function App() {
+  const [loginInfo, setLoginInfo] = useState()
+
+  return (    
+   <LoginContext.Provider value={loginInfo}>
+      <Router>
+        <Nav/>
+        <div>
+          <Route
+            render={({ location }) => {
+              return (
+              <Switch location={location}>
+                <Route exact path="/">
+                  <Redirect
+                    to={{ pathname: "/home" }}
+                  />
+                </Route>
+                {/* <Route
+                  path="/home"
+                  component={() => {
+                    window.location.href =
+                      "https://african-marketplace-landing-page.vercel.app/index.html";
+                    return null;
+                  }}
                 />
-              </Route>
-              <Route
-                path="/home"
-                component={() => {
-                  window.location.href =
-                    "https://african-marketplace-landing-page.vercel.app/index.html";
-                  return null;
-                }}
-              />
-              <Route
-                path="/about"
-                component={() => {
-                  window.location.href =
-                    "https://african-marketplace-landing-page.vercel.app/about.html";
-                  return null;
-                }}
-              />
-              <Route
-                path="/meettheteam"
-                component={() => {
-                  window.location.href =
-                    "https://african-marketplace-landing-page.vercel.app/team.html";
-                  return null;
-                }}
-              />   
-              <PrivateRoute exact path='/UserInventory' component={UserInventory} />
-              <PrivateRoute exact path='/profile' component={UserProfile} />
-              <Route path="/login" component={Login}></Route>
-              <Route path="/signup" component={SignUp}></Route>
-              <Route path="/devs" component={Developers}></Route>
-              <Route path='/devpage' component={DevPage}></Route>
-            </Switch>
-          )}}
-        />
-      </div>
-    </Router>
+                <Route
+                  path="/about"
+                  component={() => {
+                    window.location.href =
+                      "https://african-marketplace-landing-page.vercel.app/about.html";
+                    return null;
+                  }}
+                />
+                <Route
+                  path="/meettheteam"
+                  component={() => {
+                    window.location.href =
+                      "https://african-marketplace-landing-page.vercel.app/team.html";
+                    return null;
+                  }}
+                />    */}
+                <PrivateRoute exact path='/UserInventory' component={UserInventory}/>
+                <PrivateRoute exact path='/profile' component={UserProfile}/>
+                <Route path="/login" >
+                  <Login setLoginInfo={setLoginInfo}/>
+                </Route>
+                <Route path="/signup" component={SignUp}></Route>
+                <Route path="/devs" component={Developers}></Route>
+                <Route path='/devpage' component={DevPage}></Route>
+              </Switch>
+            )}}
+          />
+        </div>
+      </Router>
+   </LoginContext.Provider>
   );
 }
 
