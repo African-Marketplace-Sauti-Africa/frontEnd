@@ -1,0 +1,25 @@
+body {
+  color: white;
+}
+
+#banner {
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../assets/images/banner.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: o;
+  height: 100vh;
+}
+
+@media screen and (max-width: 736px) {
+  #banner {
+    padding: 7em 3em 5em 3em;
+    height: auto;
+    min-height: 0;
+  }
+}
