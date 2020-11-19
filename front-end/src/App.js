@@ -19,8 +19,8 @@ function App(props) {
   console.log("APP: ", props)
   return (
     <Router>
+      <Nav/>
       <div>
-        <div className='nav'><Nav/></div>
         <Route
           render={({ location }) => {
             console.log("LOC: ", location)
