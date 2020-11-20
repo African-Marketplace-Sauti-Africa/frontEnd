@@ -2,17 +2,20 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { userById, deleteUser } from '../services/users'
 import { LoginContext } from '../App'
-import '../styles/UserProfile.module.css'
+import '../styles/UserProfile.css'
 
 /* --------- This page has fictional editing --------- */
 /* .put endpoint does not exist as of 11/17/2020 */
 
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState()
-  const [editing, setEditing] = useState(false)
+ // const [editing, setEditing] = useState(false)
   const { push } = useHistory()
   const loginInfo = useContext(LoginContext)
+  console.log('loginInfo',loginInfo);
+  console.log('userInfo',userInfo);
   const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
+  //const name = userInfo.username.charAt(0).toUpperCase() + userInfo.username.slice(1)
   const id = loginInfo.subject
   
 
