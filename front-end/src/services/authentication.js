@@ -1,4 +1,5 @@
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+import jwt_decode from "jwt-decode"
 
 
 export const userLogin = loginUser => {
@@ -7,7 +8,8 @@ export const userLogin = loginUser => {
     .post('/auth/login', loginUser)
     .then(res => {
       sessionStorage.setItem('token',res.data.token)
-      resolve(res.data.token)
+      const decoded = jwt_decode(res.data.token)
+      resolve(decoded)
     })
     .catch(err => {
       console.log('Login Error',err);
@@ -28,6 +30,12 @@ const otherWay = async loginUser => {
   }
 }
 
+export const getLoginStatus = () =>{
+  const token = sessionStorage.getItem('token')
+  if(token){
+    return jwt_decode(token)
+  } return {}
+}
 
 export const userRegister = registerUser => {
   return new Promise(resolve => {

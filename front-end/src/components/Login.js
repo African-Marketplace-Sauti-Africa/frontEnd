@@ -79,12 +79,9 @@ export default function Login(props) {
         evt.preventDefault();
         const login = await userLogin(formData)
         if(login){
-            let token = login
-            let decode = jwt_decode(token)
-            props.setLoginInfo(decode)
+            props.setLoginInfo(login)
             setFormData(initialFormData);
-            push('/UserInventory/:id')
-            
+            push('/UserInventory')
         }
     }
 

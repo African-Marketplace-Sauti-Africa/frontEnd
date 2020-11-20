@@ -13,11 +13,14 @@ import Nav from './components/Nav'
 import HomePage from './components/Home'
 
 import PrivateRoute from './utils/PrivateRoute'
+import {getLoginStatus} from './services/authentication'
 
 export const LoginContext = createContext()
 
+
+
 function App() {
-  const [loginInfo, setLoginInfo] = useState()
+  const [loginInfo, setLoginInfo] = useState(getLoginStatus())
 
   return (    
    <LoginContext.Provider value={loginInfo}>
