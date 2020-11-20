@@ -23,29 +23,22 @@ function App() {
    <LoginContext.Provider value={loginInfo}>
       <Router>
         <Nav/>
-        {/* <div>
-          <Route
-            render={({ location }) => {
-              return ( */}
-              <Switch >
-                <Route exact path="/">
-                  <Redirect
-                    to={{ pathname: "/home" }}
-                  />
-                </Route>
-                <Route path="/home" component={HomePage}></Route>
-                <PrivateRoute exact path='/UserInventory' component={UserInventory}/>
-                <PrivateRoute exact path='/profile' component={UserProfile}/>
-                <Route path="/login" >
-                  <Login setLoginInfo={setLoginInfo}/>
-                </Route>
-                <Route path="/signup" component={SignUp}></Route>
-                <Route path="/devs" component={Developers}></Route>
-                <Route path='/meettheteam' component={DevPage}></Route>
-              </Switch>
-            {/* )}}
-          />
-        </div> */}
+          <Switch >
+            <Route exact path="/">
+              <Redirect
+                to={{ pathname: "/home" }}
+              />
+            </Route>
+            <Route path="/home" component={HomePage}></Route>
+            <PrivateRoute exact path='/UserInventory' component={UserInventory}/>
+            <PrivateRoute exact path='/profile' component={UserProfile}/>
+            <Route path="/login" >
+              <Login setLoginInfo={setLoginInfo}/>
+            </Route>
+            <Route path="/signup" component={SignUp}></Route>
+            <Route path="/devs" component={Developers}></Route>
+            <Route path='/meettheteam' component={DevPage}></Route>
+          </Switch>
       </Router>
    </LoginContext.Provider>
   );
