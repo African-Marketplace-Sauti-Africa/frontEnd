@@ -1,5 +1,8 @@
 import React from 'react'
-import '../styles/Home.module.css'
+import '../styles/Home.css'
+import pic1 from '../assets/images/pic01.jpeg'
+import pic2 from '../assets/images/pic02.jpeg'
+import pic3 from '../assets/images/pic03.jpeg'
 
 const HomePage = () => {
 
@@ -20,10 +23,9 @@ return(
     <section id="one" className="wrapper style1 special">
       <div className="inner">
         <header className="major">
-          <h2>Arcu aliquet vel lobortis ata nisl<br />
-          eget augue amet aliquet nisl cep donec</h2>
-          <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-          fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+          <h2>Buy Local / Sell Local<br />
+          Fruits, Vegetables, Grains, Animals, and more!</h2>
+          <p>African Marketplace enables you to list, buy, sell, and compare prices of local food stuffs.</p>
         </header>
       </div>
     </section>
@@ -31,71 +33,43 @@ return(
     {/* <!-- Two --> */}
     <section id="two" className="wrapper alt style2">
       <section className="spotlight">
-        <div className="image"><img src="images/pic01.jpeg" alt="" /></div><div className="content">
-          <h2>Magna primis lobortis<br />
-          sed ullamcorper</h2>
-          <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+        <div className="image">
+          <img className='img1' src={pic1} alt="Man at produce stall" />
+        </div>
+        <div className="content">
+          <h2>Eat fresh!<br />
+          Eat Local!</h2>
+          <p>Checkout the fresh food near you at the best prices! Compare local vendors and pick out your next sweet treat.</p>
         </div>
       </section>
       <section className="spotlight">
-        <div className="image"><img src="images/pic02.jpeg" alt="" /></div><div className="content">
-          <h2>Tortor dolore feugiat<br />
-          elementum magna</h2>
+        <div className="content">
+          <h2>Fruit<br />
+          Vegetables</h2>
           <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+        </div>
+        <div className="image">
+          <img className='img2' src={pic2} alt="Bins of produce" />
         </div>
       </section>
       <section className="spotlight">
-        <div className="image"><img src="images/pic03.jpeg" alt="" /></div><div className="content">
-          <h2>Augue eleifend aliquet<br />
-          sed condimentum</h2>
+        <div className="image">
+          <img className='img3' src={pic3} alt="Bins of produce" />
+        </div>
+        <div className="content">
+          <h2>Meats<br />
+          Grains</h2>
           <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
         </div>
       </section>
-    </section>
-
-    {/* <!-- Three --> */}
-    <section id="three" className="wrapper style3 special">
-      <div className="inner">
-        <header className="major">
-          <h2>Accumsan mus tortor nunc aliquet</h2>
-          <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-          fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-        </header>
-        <ul className="features">
-          <li className="icon fa-paper-plane">
-            <h3>Arcu accumsan</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li className="icon solid fa-laptop">
-            <h3>Ac Augue Eget</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li className="icon solid fa-code">
-            <h3>Mus Scelerisque</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li className="icon solid fa-headphones-alt">
-            <h3>Mauris Imperdiet</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li className="icon fa-heart">
-            <h3>Aenean Primis</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li className="icon fa-flag">
-            <h3>Tortor Ut</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-        </ul>
-      </div>
     </section>
 
     {/* <!-- CTA --> */}
     <section id="cta" className="wrapper style4">
       <div className="inner">
         <header>
-          <h2>Arcue ut vel commodo</h2>
-          <p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
+          <h2>Eat Fresh, Eat Local, Eat African Marketplace</h2>
+          <p className='endP'>Help small business owners while being frugal and fresh.</p>
         </header>
       </div>
     </section>
