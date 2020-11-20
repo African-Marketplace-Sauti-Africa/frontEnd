@@ -54,14 +54,16 @@ const deleteConfirm = async id => {
       <h1 className='userName'>
         Hello {name}!
       </h1>
-      <h2>Editing your profile is not currently possible</h2>
-      <h3>Coming soon...</h3>
-      <ul className='editingSoon'>
-        <li>Edit Username</li>
-        <li>Edit Password</li>
-        <li>Upload Profile Picture</li>
-      </ul>
-      <h3>However, you can delete your profile...at your own risk.</h3>
+      <div className='editInfo'>
+        <h2>Editing your profile is not currently possible</h2>
+        <h3>Coming soon...</h3>
+        <ul className='editingSoon'>
+          <li>Edit Username</li>
+          <li>Edit Password</li>
+          <li>Upload Profile Picture</li>
+        </ul>
+        <h3>However, you can delete your profile...at your own risk.</h3>
+      </div>
       {/* <button onClick={() => editUserInfo(user)} >Edit Profile</button> */}
       <div className='danger'>
         <h2 className='dangerZone'>Danger Zone!</h2>

@@ -1,7 +1,4 @@
-/* rgba(29,36,42,0.9) */
-
 body {
-  font-family: "Open Sans Condensed", sans-serif;
   background: rgba(29, 36, 42, 0.9);
 }
 
@@ -16,8 +13,7 @@ body {
   text-align: center;
 }
 
-h2,
-h3 {
+.editInfo {
   color: white;
   margin-bottom: 0%;
   text-align: center;
