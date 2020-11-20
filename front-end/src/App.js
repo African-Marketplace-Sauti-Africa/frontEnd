@@ -23,33 +23,17 @@ function App() {
    <LoginContext.Provider value={loginInfo}>
       <Router>
         <Nav/>
-        <div>
+        {/* <div>
           <Route
             render={({ location }) => {
-              return (
-              <Switch location={location}>
+              return ( */}
+              <Switch >
                 <Route exact path="/">
                   <Redirect
                     to={{ pathname: "/home" }}
                   />
                 </Route>
                 <Route path="/home" component={HomePage}></Route>
-                {/* <Route
-                  path="/about"
-                  component={() => {
-                    window.location.href =
-                      "https://african-marketplace-landing-page.vercel.app/about.html";
-                    return null;
-                  }}
-                />
-                <Route
-                  path="/meettheteam"
-                  component={() => {
-                    window.location.href =
-                      "https://african-marketplace-landing-page.vercel.app/team.html";
-                    return null;
-                  }}
-                />  */}
                 <PrivateRoute exact path='/UserInventory' component={UserInventory}/>
                 <PrivateRoute exact path='/profile' component={UserProfile}/>
                 <Route path="/login" >
@@ -59,9 +43,9 @@ function App() {
                 <Route path="/devs" component={Developers}></Route>
                 <Route path='/meettheteam' component={DevPage}></Route>
               </Switch>
-            )}}
+            {/* )}}
           />
-        </div>
+        </div> */}
       </Router>
    </LoginContext.Provider>
   );
