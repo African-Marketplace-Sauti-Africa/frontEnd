@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import '../styles/DevPage.module.css';
+import '../styles/DevPage.css';
 import styled, { keyframes } from 'styled-components';
 
 const kf = keyframes`

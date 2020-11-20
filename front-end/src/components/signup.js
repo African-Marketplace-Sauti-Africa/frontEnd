@@ -4,7 +4,7 @@ import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import * as yup from 'yup';
 import {userRegisterAndLogin} from '../services/authentication';
 import defaultSchema from '../Validation/signupSchema';
-import '../styles/signup.module.css';
+import '../styles/signup.css';
 
 const GlobalStyle = createGlobalStyle`
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');

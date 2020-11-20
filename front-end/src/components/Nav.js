@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import '../styles/nav.module.css'
+import '../styles/nav.css'
 
 
 function Nav(props) {console.log('nav login',props.loginStatus);

@@ -2,8 +2,7 @@ import React, {useState, useEffect} from "react";
 import Schema from '../Validation/Schema';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom'
-import jwt_decode from "jwt-decode"
-import '../styles/Login.module.css'
+import '../styles/LoginA.css'
 import { userLogin } from '../services/authentication'
 import styled, { keyframes } from 'styled-components'
 
