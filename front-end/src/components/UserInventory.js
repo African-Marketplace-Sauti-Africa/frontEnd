@@ -1,6 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
-import {useParams, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import { LoginContext } from '../App'
+import ItemCard from './ItemCard'
+import '../styles/ItemCard.css'
 
 const UserInventory = () => {
  const [userItems, setUserItems] = useState([])
@@ -11,14 +14,19 @@ const UserInventory = () => {
      description: '',
      location: ''
  })
+    
+  const loginInfo = useContext(LoginContext)
+  const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
+    const id = loginInfo.subject
+    console.log('Logged in ',loginInfo)
 
-const {id} = useParams()
+
 
     useEffect(()=>{
         axiosWithAuth()
-        .get(`https://african-marketplace-back-end.herokuapp.com/users/108/items`)
+        .get(`https://african-marketplace-back-end.herokuapp.com/users/${id}/items`)
         .then((res) => {
-            console.log('RES: ', res.data)
+            console.log('RES: ', res.data.items)
             setUserItems(res.data.items)
         })
         .catch((err) => {
@@ -36,9 +44,10 @@ const {id} = useParams()
     const onSubmit = (e) => {
         e.preventDefault()
         axiosWithAuth()
-        .post('https://african-marketplace-back-end.herokuapp.com/users/108/items', newItemValues)
+        .post(`https://african-marketplace-back-end.herokuapp.com/items/additem`, newItemValues)
         .then((res) => {
             console.log(res)
+            setUserItems(res.data)
         })
         .catch((err) => {
             console.log(err)
@@ -47,10 +56,19 @@ const {id} = useParams()
 
     return (
         <div>
-            <button onClick={()=> setAddItem(!additem) }>List a New Item</button>
+            <Link to='/profile' >Profile</Link>
+            <h1>{`Hello ${name}, here are your Items`}</h1>
+            <div className='cardContainer'>
+            {
+                userItems.map((item, key) => {
+                    return <ItemCard item={item} key={key} />
+                })
+            }
+            </div>
+            <button onClick={()=> setAddItem(!additem) }>{additem ? 'Cancel' : 'List a new item'}</button>
             {additem && 
             <div>
-                <form>
+                <form onSubmit={onSubmit}>
                     <label>
                         Item Name:
                         <input 
@@ -91,12 +109,11 @@ const {id} = useParams()
                         onChange={onChange}
                         />
                     </label>
-                    <button>List</button>
+                    <button>Add Item</button>
                 </form>
             </div>
             }
-            <Link to='/profile' >Profile</Link>
-            <p>PRIVATE PAGE</p>
+            
         </div>
     )
 }

@@ -46,5 +46,4 @@ function App() {
    </LoginContext.Provider>
   );
 }
-
 export default App;

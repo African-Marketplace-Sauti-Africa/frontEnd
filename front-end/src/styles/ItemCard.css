@@ -1,0 +1,12 @@
+.cardContainer {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.itemCard {
+    width: 30%;
+    border: 1px solid black;
+    background: #e8e8e8
+    
+}
