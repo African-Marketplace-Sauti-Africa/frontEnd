@@ -23,10 +23,9 @@ return(
     <section id="one" className="wrapper style1 special">
       <div className="inner">
         <header className="major">
-          <h2>Arcu aliquet vel lobortis ata nisl<br />
-          eget augue amet aliquet nisl cep donec</h2>
-          <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-          fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+          <h2>Buy Local / Sell Local<br />
+          Fruits, Vegetables, Grains, Animals, and more!</h2>
+          <p>African Marketplace enables you to list, buy, sell, and compare prices of local food stuffs.</p>
         </header>
       </div>
     </section>
@@ -38,15 +37,15 @@ return(
           <img className='img1' src={pic1} alt="Man at produce stall" />
         </div>
         <div className="content">
-          <h2>Magna primis lobortis<br />
-          sed ullamcorper</h2>
-          <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+          <h2>Eat fresh!<br />
+          Eat Local!</h2>
+          <p>Checkout the fresh food near you at the best prices! Compare local vendors and pick out your next sweet treat.</p>
         </div>
       </section>
       <section className="spotlight">
         <div className="content">
-          <h2>Tortor dolore feugiat<br />
-          elementum magna</h2>
+          <h2>Fruit<br />
+          Vegetables</h2>
           <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
         </div>
         <div className="image">
@@ -58,8 +57,8 @@ return(
           <img className='img3' src={pic3} alt="Bins of produce" />
         </div>
         <div className="content">
-          <h2>Augue eleifend aliquet<br />
-          sed condimentum</h2>
+          <h2>Meats<br />
+          Grains</h2>
           <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
         </div>
       </section>
@@ -69,8 +68,8 @@ return(
     <section id="cta" className="wrapper style4">
       <div className="inner">
         <header>
-          <h2>Arcue ut vel commodo</h2>
-          <p className='endP'>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
+          <h2>Eat Fresh, Eat Local, Eat African Marketplace</h2>
+          <p className='endP'>Help small business owners while being frugal and fresh.</p>
         </header>
       </div>
     </section>
