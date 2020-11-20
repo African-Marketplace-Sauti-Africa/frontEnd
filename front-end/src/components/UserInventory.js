@@ -2,6 +2,8 @@ import React, {useState, useEffect, useContext} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {Link} from 'react-router-dom';
 import { LoginContext } from '../App'
+import ItemCard from './ItemCard'
+import '../styles/ItemCard.css'
 
 const UserInventory = () => {
  const [userItems, setUserItems] = useState([])
@@ -14,7 +16,7 @@ const UserInventory = () => {
  })
     
   const loginInfo = useContext(LoginContext)
-//   const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
+  const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
     const id = loginInfo.subject
     console.log('Logged in ',loginInfo)
 
@@ -54,18 +56,15 @@ const UserInventory = () => {
 
     return (
         <div>
+            <Link to='/profile' >Profile</Link>
+            <h1>{`Hello ${name}, here are your Items`}</h1>
+            <div className='cardContainer'>
             {
                 userItems.map((item, key) => {
-                    return (
-                        <div className='itemCard'>
-                            <h3>{item.name}</h3>
-                         <p>{item.description}</p>
-                    <h5>{item.location}</h5>
-                    <h5>{`$${item.price}`}</h5>
-                        </div>
-                    )
+                    return <ItemCard item={item} key={key} />
                 })
             }
+            </div>
             <button onClick={()=> setAddItem(!additem) }>{additem ? 'Cancel' : 'List a new item'}</button>
             {additem && 
             <div>
@@ -114,8 +113,7 @@ const UserInventory = () => {
                 </form>
             </div>
             }
-            <Link to='/profile' >Profile</Link>
-            <p>PRIVATE PAGE</p>
+            
         </div>
     )
 }

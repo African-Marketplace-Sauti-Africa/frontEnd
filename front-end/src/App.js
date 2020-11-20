@@ -10,6 +10,7 @@ import DevPage from './components/DevPage'
 import Nav from './components/Nav'
 import PrivateRoute from './utils/PrivateRoute'
 export const LoginContext = createContext()
+
 function App() {
   const [loginInfo, setLoginInfo] = useState()
   return (    
