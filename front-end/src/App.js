@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
-import './styles/App.css'
+import './styles/App.module.css'
 
 import UserInventory from './components/UserInventory'
 import UserProfile from './components/UserProfile'
