@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+
+/* *{
+    box-sizing: border-box;
+    font-family: 'Open Sans Condensed', sans-serif;
+    max-width:100%;
+    margin-right:0%;
+
+} */
+
+#signupTitle {
+    color:rgba(29, 36, 42, 0.9);
+    margin-bottom:2%;
+}
+
+/* .signUpStyledInput {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    outline: none;
+    border-style: none;
+    background-color: white;
+    margin-left: 0%;
+    color:rgba(29, 36, 42, 0.9);
+} */

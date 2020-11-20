@@ -4,27 +4,30 @@ import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import * as yup from 'yup';
 import {userRegisterAndLogin} from '../services/authentication';
 import defaultSchema from '../Validation/signupSchema';
+import '../styles/signup.module.css';
 
 const GlobalStyle = createGlobalStyle`
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
 * {
-    box-sizing:border-box;
-}
-html {
-    height:100%;
+    /* box-sizing:border-box; */
 
 }
-body {
+
+*{
+    box-sizing: border-box;
     font-family: 'Open Sans Condensed', sans-serif;
-    background: rgba(29, 36, 42, 0.9);
-    display:flex;
-    align-items:center;
+    max-width:100%;
+    margin-right:0%;
+
 }
+
 
 input {
     display: block;
     box-sizing: border-box;
-    width: 100%;
+    align-items:center;
+    justify-content:center;
+    width: 120%;
     outline: none;
     border-style: none;
     background-color: white;
@@ -35,18 +38,21 @@ input {
 fieldset{
     border:.5px solid rgba(29, 36, 42, 0.9);
     border-radius: 3px;
-    width: 140%;
+    width: 150%;
     margin-left: -20%;
     margin-bottom: 5%;
 }
 `
 
-const kf = keyframes`
+const keyf = keyframes`
     100%{
         opacity: 1;
     }
 `
-
+const StyledDiv = styled.div`
+    display:flex;
+    justify-content:center;
+`
 const StyledForm = styled.form`
     box-shadow:0px 0px 20px 0px black;
     display: flex;
@@ -60,27 +66,29 @@ const StyledForm = styled.form`
     height: 450px;
     opacity: 0;
     color:rgba(29, 36, 42, 0.9);
-    animation: ${kf} 1s ease-in-out forwards;
+    animation: ${keyf} 1s ease-in-out forwards;
     margin-top:10%;
 `
 
 const Title = styled.div`
     display: block;
     border-bottom: 1px solid  rgb(62, 62, 65);
-    width: 90%;
+    width: 80%;
     margin-top: -2%;
     color: rgb(62, 62, 65);
     margin-bottom:5%;
+    color:rgba(29, 36, 42, 0.9);
 `
 
 const InputInfo = styled.div`
     display: block;
     box-sizing: border-box;
-    width: 50%;
+    width: 70%;
+    align-items:center;
     outline: none;
     border-style: none;
     background-color:white;
-    margin-left: -4.5%;
+    margin-left:100px;
 `
 
 const StyledButton = styled.button`
@@ -91,7 +99,8 @@ const StyledButton = styled.button`
     border:0;
     border-radius:5px;
     height:40px;
-    padding: 0 20px;
+    width:50%;
+    padding: 0 10px;
     cursor:pointer;
     box-sizing:border-box;
     margin-top:2%;
@@ -190,8 +199,9 @@ function SignUp() {
     return(
         <>
         <GlobalStyle/>
+            <StyledDiv>
              <StyledForm onSubmit={onSubmit}>
-             <Title><h2>Join African Marketplace</h2></Title>
+             <Title><h2 id='signUpTitle'>Join African Marketplace</h2></Title>
                 <StyledError>{errors.username}</StyledError>
                  <InputInfo>
                      <fieldset>
@@ -216,6 +226,7 @@ function SignUp() {
                 </InputInfo>
                 <StyledButton disabled={disabled}>Submit</StyledButton>
                 </StyledForm>
+            </StyledDiv>
 
         </>
     );

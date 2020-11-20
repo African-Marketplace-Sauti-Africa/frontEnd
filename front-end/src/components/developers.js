@@ -9,8 +9,8 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Open Sans', sans-serif;
         letter-spacing:2.5px;
         color:white;
-        text-align:center;
-        align-items:center;
+        /* text-align:center; */
+        /* align-items:center; */
         border-bottom: 1px;
         border-color: white;
         /* margin-top:30px; */
@@ -52,7 +52,7 @@ const Card = styled.div`
     justify-content:left;
     align-items:center;
     flex-direction:row;
-    width:70%;
+    width:60%;
     margin:10px;
     padding:2px;
     /* box-shadow:0px 0px 20px 0px rgba(0, 0, 0, 0.2); */
@@ -68,6 +68,7 @@ const Portrait = styled.img`
     margin-left:15px;
     margin:20px;
     border:none;
+    box-shadow:none;
    
 `
 
