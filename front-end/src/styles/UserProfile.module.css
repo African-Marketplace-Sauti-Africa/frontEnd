@@ -1,0 +1,81 @@
+body {
+  background: rgba(29, 36, 42, 0.9);
+}
+
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userName {
+  margin-left: 0;
+  text-align: center;
+}
+
+.editInfo {
+  color: white;
+  margin-bottom: 0%;
+  text-align: center;
+}
+
+.editingSoon {
+  color: white;
+}
+
+.danger {
+  margin-top: 10%;
+  border: 2px solid red;
+  padding-bottom: 2.5%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 20px 0px black;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.dangerZone {
+  color: black;
+}
+
+.dangerBtn {
+  width: 20%;
+  padding: 1.5% 0;
+  margin-top: 1%;
+  font-size: 1rem;
+}
+
+.text-warning {
+  color: red;
+  font-weight: bolder;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .danger {
+    width: 60%;
+  }
+  .dangerBtn {
+    width: 20%;
+  }
+}
+
+@media (max-width: 900px) {
+  .danger {
+    width: 80%;
+  }
+}
+
+@media (max-width: 650px) {
+  .dangerBtn {
+    width: 30%;
+  }
+}
+
+@media (max-width: 450px) {
+  .dangerBtn {
+    width: 40%;
+  }
+}

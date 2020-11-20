@@ -8,25 +8,43 @@ nav{
     margin-top: -.51%;
     margin-right: -.5%;
     margin-left: -.51%;
- 
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
 }
 
 
 .navLinks{
   width: 50%;
+  text-shadow: 1px 1px black;
   display: flex;
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  text-align: center;
 }
+
 
 .navBar a {
   
   color: white;
   padding: 1.5%;
   text-decoration: none;
+  transition: 500ms;
+
 }
 
 .navBar a:hover {
   color: #21b2a6;
+  font-size: 110%;
+  transition: 500ms;
+}
+
+.navTitle{
+    color: white;
+    display: flex;
+    margin-bottom: 2%;
+    text-shadow: 1px 1px black;
+    font-size: 170%;
+    margin-left: -5%;
+    width: 17.8%;
 }

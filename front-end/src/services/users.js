@@ -7,7 +7,6 @@ export const userById = id => {
     axiosWithAuth()
     .get(`/users/${id}`)
     .then(res => {
-      console.log('userById res:',res);
       resolve(res)
     })
     .catch(err => {

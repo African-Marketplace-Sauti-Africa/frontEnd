@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { userById, deleteUser } from '../services/users'
 import { LoginContext } from '../App'
+import '../styles/UserProfile.module.css'
 
 /* --------- This page has fictional editing --------- */
 /* .put endpoint does not exist as of 11/17/2020 */
@@ -13,8 +14,6 @@ const UserProfile = () => {
   const loginInfo = useContext(LoginContext)
   const name = loginInfo.username.charAt(0).toUpperCase() + loginInfo.username.slice(1)
   const id = loginInfo.subject
-  
-  console.log('Profile login',loginInfo);
   
 
   // const editUserInfo = (user) =>{
@@ -42,7 +41,6 @@ const deleteConfirm = async id => {
   useEffect(() => {
     userById(id)
       .then(res => {
-        console.log('UserProfile userById Response', res)
         setUserInfo(res.data)
       })
       .catch(err => {
@@ -52,15 +50,25 @@ const deleteConfirm = async id => {
 
 
   return(
-    <div>
-      <h1>
+    <div className='userProfile'>
+      <h1 className='userName'>
         Hello {name}!
       </h1>
+      <div className='editInfo'>
+        <h2>Editing your profile is not currently possible</h2>
+        <h3>Coming soon...</h3>
+        <ul className='editingSoon'>
+          <li>Edit Username</li>
+          <li>Edit Password</li>
+          <li>Upload Profile Picture</li>
+        </ul>
+        <h3>However, you can delete your profile...at your own risk.</h3>
+      </div>
       {/* <button onClick={() => editUserInfo(user)} >Edit Profile</button> */}
-      <div>
-        <h2>Danger Zone!</h2>
-        <p>Deleting your entire profile is permanent!</p>
-        <button onClick={e => {
+      <div className='danger'>
+        <h2 className='dangerZone'>Danger Zone!</h2>
+        <p className='text-warning'>Deleting your entire profile is permanent!</p>
+        <button className='dangerBtn' onClick={e => {
           e.stopPropagation()
           deleteConfirm(id)
         }}>Delete Profile</button>

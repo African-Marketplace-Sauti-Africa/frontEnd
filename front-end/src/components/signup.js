@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory } from 'react-router-dom';
-import styled, { createGlobalStyle, css, keyframes } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import * as yup from 'yup';
-import axios from 'axios';
 import {userRegisterAndLogin} from '../services/authentication';
-// import defaultSchema from '../Validation/signupSchema';
+import defaultSchema from '../Validation/signupSchema';
+import '../styles/signup.module.css';
 
 const GlobalStyle = createGlobalStyle`
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
 * {
-    box-sizing:border-box;
-}
-html {
-    height:100%;
+    /* box-sizing:border-box; */
 
 }
-body {
+
+*{
+    box-sizing: border-box;
     font-family: 'Open Sans Condensed', sans-serif;
-    background: rgba(29, 36, 42, 0.9);
+    max-width:100%;
+    margin-right:0%;
+
 }
+
 
 input {
     display: block;
     box-sizing: border-box;
-    width: 100%;
+    align-items:center;
+    justify-content:center;
+    width: 120%;
     outline: none;
     border-style: none;
     background-color: white;
@@ -34,18 +38,21 @@ input {
 fieldset{
     border:.5px solid rgba(29, 36, 42, 0.9);
     border-radius: 3px;
-    width: 140%;
+    width: 150%;
     margin-left: -20%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 `
 
-const kf = keyframes`
+const keyf = keyframes`
     100%{
         opacity: 1;
     }
 `
-
+const StyledDiv = styled.div`
+    display:flex;
+    justify-content:center;
+`
 const StyledForm = styled.form`
     box-shadow:0px 0px 20px 0px black;
     display: flex;
@@ -59,27 +66,29 @@ const StyledForm = styled.form`
     height: 450px;
     opacity: 0;
     color:rgba(29, 36, 42, 0.9);
-    animation: ${kf} 1s ease-in-out forwards;
+    animation: ${keyf} 1s ease-in-out forwards;
     margin-top:10%;
 `
 
 const Title = styled.div`
     display: block;
     border-bottom: 1px solid  rgb(62, 62, 65);
-    width: 90%;
+    width: 80%;
     margin-top: -2%;
     color: rgb(62, 62, 65);
     margin-bottom:5%;
+    color:rgba(29, 36, 42, 0.9);
 `
 
 const InputInfo = styled.div`
     display: block;
     box-sizing: border-box;
-    width: 50%;
+    width: 70%;
+    align-items:center;
     outline: none;
     border-style: none;
     background-color:white;
-    margin-left: -4.5%;
+    margin-left:100px;
 `
 
 const StyledButton = styled.button`
@@ -90,77 +99,78 @@ const StyledButton = styled.button`
     border:0;
     border-radius:5px;
     height:40px;
-    padding: 0 20px;
+    width:50%;
+    padding: 0 10px;
     cursor:pointer;
     box-sizing:border-box;
     margin-top:2%;
 `
+const StyledError = styled.div`
+    color:red;
+    font-weight:800;
 
-// const StyledError = styled.div`
-
-// `
+`
 
 const initialFormValues = {
     username: '',
     password: '',
-    // termsOfService: ''
   };
   
-  const initialFormErrors = {
-    name: '',
-    email: '',
+const initialFormErrors = {
+    username: '',
     password: '',
-    termsOfService: '',
   };
 
 
-  const initialDisabled = true;
+const initialDisabled = true;
 
-function SignUp(props) {
+function SignUp() {
 
     const { push } = useHistory()
-    const { inputChange, checkboxChange } = props;
+    // const { inputChange, checkboxChange } = props;
 
     const [newForm, setForm] = useState(initialFormValues)
-    const [errors, setErrors] = useState(initialFormErrors)
+    const [errors, setErrors] = useState('')
     const [disabled, setDisabled] = useState(initialDisabled)
-    const [displayUser, setUser] = useState([])
+    // const [displayUser, setUser] = useState([])
     
-    
-    // useEffect(() => {
-    //     defaultSchema.validate(newForm)
-    //     .then(valid => setDisabled(!valid))
-    // }, [newForm, defaultSchema])
 
-    // const validationCheck = (event) => {
-    //     event.persist()
-    //     yup.reach(defaultSchema, event.target.name)
-    //     .validate(event.target.name)
-    //     .then(valid => setErrors(
-    //         {...setErrors, [event.target.name]: errors.errors}
-    //     ))
-    //     .catch(error => 
-    //         setErrors(
-    //             {...errors, [event.target.name]: errors.errors}
-    //         ));
-    // }
+    const validationCheck = (name, value) => {
+        yup
+        .reach(defaultSchema, name)
+        .validate(value)
+        .then(() => setErrors({...errors, [name]: ''})
+    )
+        .catch(err => 
+            setErrors({...errors, [name]: err.errors[0]})
+
+        );
+    
+    }
+
+    useEffect(() => {
+        let update = true
+        defaultSchema.isValid(newForm).then((valid) => {
+           if(update) {
+            setDisabled(!valid)
+           } 
+        })
+        return (() =>{update = false})
+    }, [newForm]);
+
+    const inputChange = (name, value) => {
+        setForm({
+            ...newForm, [name]:value
+        })
+    }
 
     const onSubmit = async (event) => {
         event.preventDefault()
         const testSignUp = {
             username: newForm.username,
             password: newForm.password,
-            // termsOfService: newForm.termsOfService,
             department: 'seller'
         }
-        
-        // axios.post('', testSignUp)
-        // .then(value => {
-        //     const newSignUp = value.data
-        //     setUser([newSignUp],...displayUser)
-        //     setUser(value.data)
-        //     setForm(initialFormValues)
-        // })
 
        const res = await userRegisterAndLogin(testSignUp)
         if(res === 'User Login Failed'){
@@ -173,13 +183,10 @@ function SignUp(props) {
 
     }
 
-    const onCheckboxChange = evt => {
-        const { name, checked } = evt.target
-        checkboxChange(name, checked);
-    }
-
     const onChange = (e) => {
-        
+        const {name, value} = e.target
+        inputChange(name, value)
+        validationCheck(name, value)
         e.preventDefault()
         setForm({
             ...newForm,
@@ -192,8 +199,10 @@ function SignUp(props) {
     return(
         <>
         <GlobalStyle/>
+            <StyledDiv>
              <StyledForm onSubmit={onSubmit}>
-             <Title><h2>Join African Marketplace</h2></Title>
+             <Title><h2 id='signUpTitle'>Join African Marketplace</h2></Title>
+                <StyledError>{errors.username}</StyledError>
                  <InputInfo>
                      <fieldset>
                          <legend>Username</legend>
@@ -204,6 +213,7 @@ function SignUp(props) {
                             type='text'/>
                      </fieldset>
                 </InputInfo>
+                <StyledError>{errors.password}</StyledError>
                 <InputInfo>
                     <fieldset>
                          <legend>Password</legend>
@@ -214,10 +224,9 @@ function SignUp(props) {
                             type='password'/>
                      </fieldset>
                 </InputInfo>
-
-                {/* <StyledError><p>Error message here</p></StyledError> */}
-                <StyledButton type="submit" onSubmit={onSubmit}>Submit</StyledButton>
+                <StyledButton disabled={disabled}>Submit</StyledButton>
                 </StyledForm>
+            </StyledDiv>
 
         </>
     );

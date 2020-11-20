@@ -1,18 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import '../styles/nav.css'
+import '../styles/nav.module.css'
 
 
 function Nav() {
     return (
     <div>
       <nav className='navBar'>
-          <Link style={{color: 'white', textDecoration: 'none'}} to='/'>
-          <h3>African-MarketPlace</h3>
-          </Link>
+          <h3 className='navTitle'>African-MarketPlace</h3>
           <ul className='navLinks'>
             <Link className='navHome' to="/home"><li>Home</li></Link>
-            <Link className='navAbour' to="/about"><li>About</li></Link>
             <Link className='navMeet' to="/meettheteam"><li>Meet The Team</li></Link>
             <Link className='navLogin' to="/login"><li>Login</li></Link>
             <Link className='navSignup' to="/signup"><li>Sign Up</li></Link>
