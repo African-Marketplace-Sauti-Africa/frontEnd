@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
         border-bottom: 1px;
         border-color: white;
         /* margin-top:30px; */
+        background-color:rgba(29, 36, 42, 0.9);
     }
     h2 {
         border-bottom: 2px solid  white; 

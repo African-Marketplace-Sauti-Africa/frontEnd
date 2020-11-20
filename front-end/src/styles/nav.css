@@ -41,6 +41,8 @@ nav{
 
 .navTitle{
     color: white;
+    display: flex;
+    margin-bottom: 2%;
     text-shadow: 1px 1px black;
     font-size: 170%;
     margin-left: -5%;
