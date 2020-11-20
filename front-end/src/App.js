@@ -21,11 +21,12 @@ export const LoginContext = createContext()
 
 function App() {
   const [loginInfo, setLoginInfo] = useState(getLoginStatus())
+  const [loginStatus, setLoginStatus] = useState(false)
 
   return (    
    <LoginContext.Provider value={loginInfo}>
       <Router>
-        <Nav/>
+        <Nav loginStatus={loginStatus}/>
           <Switch >
             <Route exact path="/">
               <Redirect
@@ -36,7 +37,7 @@ function App() {
             <PrivateRoute exact path='/UserInventory' component={UserInventory}/>
             <PrivateRoute exact path='/profile' component={UserProfile}/>
             <Route path="/login" >
-              <Login setLoginInfo={setLoginInfo}/>
+              <Login setLoginInfo={setLoginInfo} setLoginStatus={setLoginStatus}/>
             </Route>
             <Route path="/signup" component={SignUp}></Route>
             <Route path="/devs" component={Developers}></Route>

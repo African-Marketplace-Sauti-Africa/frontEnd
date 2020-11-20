@@ -80,6 +80,7 @@ export default function Login(props) {
         const login = await userLogin(formData)
         if(login){
             props.setLoginInfo(login)
+            props.setLoginStatus(true)
             setFormData(initialFormData);
             push('/UserInventory')
         }
