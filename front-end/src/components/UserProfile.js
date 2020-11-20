@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { userById, deleteUser } from '../services/users'
 import { LoginContext } from '../App'
-import '../styles/UserProfile.css'
+import '../styles/UserProfile.module.css'
 
 /* --------- This page has fictional editing --------- */
 /* .put endpoint does not exist as of 11/17/2020 */

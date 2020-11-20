@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
-import './styles/App.css'
+import './styles/App.module.css'
 
 import UserInventory from './components/UserInventory'
 import UserProfile from './components/UserProfile'
@@ -10,6 +10,7 @@ import SignUp from "./components/signup"
 import Developers from './components/developers'
 import DevPage from './components/DevPage'
 import Nav from './components/Nav'
+import HomePage from './components/Home'
 
 import PrivateRoute from './utils/PrivateRoute'
 
@@ -32,15 +33,8 @@ function App() {
                     to={{ pathname: "/home" }}
                   />
                 </Route>
+                <Route path="/home" component={HomePage}></Route>
                 {/* <Route
-                  path="/home"
-                  component={() => {
-                    window.location.href =
-                      "https://african-marketplace-landing-page.vercel.app/index.html";
-                    return null;
-                  }}
-                />
-                <Route
                   path="/about"
                   component={() => {
                     window.location.href =
@@ -55,7 +49,7 @@ function App() {
                       "https://african-marketplace-landing-page.vercel.app/team.html";
                     return null;
                   }}
-                />    */}
+                />  */}
                 <PrivateRoute exact path='/UserInventory' component={UserInventory}/>
                 <PrivateRoute exact path='/profile' component={UserProfile}/>
                 <Route path="/login" >

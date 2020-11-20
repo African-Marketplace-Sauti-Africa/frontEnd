@@ -3,7 +3,7 @@ import Schema from '../Validation/Schema';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom'
 import jwt_decode from "jwt-decode"
-import '../styles/Login.css'
+import '../styles/Login.module.css'
 import { userLogin } from '../services/authentication'
 import styled, { keyframes } from 'styled-components'
 
