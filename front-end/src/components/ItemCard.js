@@ -1,17 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/ItemCard.css'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import EditItem from './EditItem'
 
 const ItemCard = (props) => {
     const {item} = props
-
+    const [editForm, setEditForm] = useState(false)
+    
     const onEdit = (e) => {
-        axiosWithAuth()
-        .put('https://african-marketplace-back-end.herokuapp.com/items/:id')
+        setEditForm(!editForm)
     }
 
     const onDelete = (e) => {
-
+        axiosWithAuth()
+        .delete(`/items/${item.id}`)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
     return (
         <>
@@ -23,6 +31,7 @@ const ItemCard = (props) => {
             <button className='editBtn' onClick={onEdit}>Edit Item</button>
             <button className='dltBtn' onClick={onDelete}>Delete Item</button>
             </div>
+            {editForm && <EditItem item={item}/> }
             
         </>
     )
