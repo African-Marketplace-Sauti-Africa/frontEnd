@@ -1,12 +1,20 @@
-.cardContainer {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-evenly;
-}
 
 .itemCard {
     width: 30%;
     border: 1px solid black;
-    background: #e8e8e8
-    
+    background: #e8e8e8;
+    margin: 1% 0;
+    overflow: auto;
+}
+
+.editBtn {
+    width: auto;
+    height: auto;
+    margin: 1%;
+}
+ 
+.dltBtn{
+    width: auto;
+    height: auto;
+    margin: 1%;
 }

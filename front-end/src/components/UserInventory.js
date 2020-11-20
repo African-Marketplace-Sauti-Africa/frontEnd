@@ -3,7 +3,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {Link} from 'react-router-dom';
 import { LoginContext } from '../App'
 import ItemCard from './ItemCard'
-import '../styles/ItemCard.css'
+import '../styles/UserInventory.css'
 
 const UserInventory = () => {
  const [userItems, setUserItems] = useState([])
