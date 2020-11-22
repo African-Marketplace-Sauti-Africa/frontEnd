@@ -3,7 +3,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth';
 import {Link} from 'react-router-dom';
 import { LoginContext } from '../App'
 import ItemCard from './ItemCard'
-import '../styles/ItemCard.css'
+import '../styles/UserInventory.css'
 
 const UserInventory = () => {
  const [userItems, setUserItems] = useState([])
@@ -55,7 +55,7 @@ const UserInventory = () => {
     }
 
     return (
-        <div>
+        <div className='UserInventory'>
             <Link to='/profile' >Profile</Link>
             <h1>{`Hello ${name}, here are your Items`}</h1>
             <div className='cardContainer'>
@@ -67,11 +67,12 @@ const UserInventory = () => {
             </div>
             <button onClick={()=> setAddItem(!additem) }>{additem ? 'Cancel' : 'List a new item'}</button>
             {additem && 
-            <div>
-                <form onSubmit={onSubmit}>
-                    <label>
+            <div className='formContainer'>
+                <form onSubmit={onSubmit} className='addItemForm'>
+                    <label className='itemFormLabel'>
                         Item Name:
                         <input 
+                        className='itemFormInput'
                         type='text'
                         name='name'
                         placeholder='Enter Item Name'
@@ -79,9 +80,10 @@ const UserInventory = () => {
                         onChange={onChange}
                         />
                     </label>
-                    <label>
+                    <label className='itemFormLabel'>
                         Price:
                         <input 
+                        className='itemFormInput'
                         type='number'
                         name='price'
                         placeholder='Enter a numerical value'
@@ -89,9 +91,10 @@ const UserInventory = () => {
                         onChange={onChange}
                         />
                     </label>
-                    <label>
+                    <label className='itemFormLabel'>
                         Description:
                         <input 
+                        className='itemFormInput'
                         type='text'
                         name='description'
                         placeholder='Describe your item'
@@ -99,9 +102,10 @@ const UserInventory = () => {
                         onChange={onChange}
                         />
                     </label>
-                    <label>
+                    <label className='itemFormLabel'>
                         Location:
                         <input 
+                        className='itemFormInput'
                         type='text'
                         name='location'
                         placeholder='Enter Country'
@@ -109,7 +113,7 @@ const UserInventory = () => {
                         onChange={onChange}
                         />
                     </label>
-                    <button>Add Item</button>
+                    <button className='addBtn'>Add Item</button>
                 </form>
             </div>
             }
